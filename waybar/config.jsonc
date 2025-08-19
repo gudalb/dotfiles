@@ -44,7 +44,8 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "<span size='10000' foreground='#808080'>  </span>Disconnected",
         "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
-        "tooltip-format-ethernet": "IP: {ipaddr}"
+        "tooltip-format-ethernet": "IP: {ipaddr}",
+        "on-click": "nm-connection-editor"
     },
     "pulseaudio": {
         "format": "<span size='10000' foreground='#808080'>{icon}  {volume}%</span>",
@@ -57,5 +58,5 @@
             ]
         },
         "on-click": "~/.config/waybar/scripts/start-pavucontrol.sh"
-    },
+    }
 }
