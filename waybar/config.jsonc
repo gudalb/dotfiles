@@ -8,14 +8,13 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "custom/audio",
         "network",
         "battery",
         "pulseaudio",
         "clock"
     ],
     "clock": {
-        "format": "<span size='10000' foreground='#808080'>   </span>{:%a %d %H:%M}",
+        "format": "{:%a %d %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "battery": {
