@@ -4,4 +4,5 @@ prepend_keymap = [
   { on = [ "g", "s" ], run = "cd /run/media/abe/snabb/downloads/shows", desc = "Go to snabb - shows" },
   { on = [ "g", "w" ], run = "cd '/home/abe/Games/battlenet/drive_c/Program Files (x86)/World of Warcraft'", desc = "Go to WoW" },
   { on = [ "g", "t" ], run = "cd ~/.local/share/Trash", desc = "Go to Trash" },
+  { on = [ "<C-w>" ], run = "close", desc = "Close current tab" },
 ]
