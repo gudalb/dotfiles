@@ -2,7 +2,7 @@
 
 * {
     font-family: "MesloLGS Nerd Font Mono Bold";
-    font-size: 16px;
+    font-size: 12px;
     min-height: 0;
     font-weight: bold;
 }
@@ -30,8 +30,8 @@ button {
 
 button:hover {
     background: inherit;
-    color: @mauve;
-    border-top: 2px solid @mauve;
+    color: @gray;
+    border-top: 2px solid @gray;
 }
 
 #workspaces button {
@@ -40,14 +40,14 @@ button:hover {
 
 #workspaces button.focused {
     background-color: rgba(0, 0, 0, 0.3);
-    color: @rosewater;
-    border-top: 2px solid @rosewater;
+    color: @gray;
+    border-top: 2px solid @gray;
 }
 
 #workspaces button.active {
     background-color: rgba(0, 0, 0, 0.3);
-    color: @mauve;
-    border-top: 2px solid @mauve;
+    color: @gray;
+    border-top: 2px solid @gray;
 }
 
 #workspaces button.urgent {
@@ -76,23 +76,19 @@ button:hover {
 }
 
 #clock {
-    color: @maroon;
-    border-bottom: 2px solid @maroon;
+    color: @gray;
 }
 
 #clock.date {
-    color: @mauve;
-    border-bottom: 2px solid @mauve;
+    color: @gray;
 }
 
 #pulseaudio {
-    color: @blue;
-    border-bottom: 2px solid @blue;
+    color: @gray;
 }
 
 #network {
-    color: @yellow;
-    border-bottom: 2px solid @yellow;
+    color: @gray;
 }
 
 #idle_inhibitor {
@@ -101,12 +97,11 @@ button:hover {
 }
 
 #idle_inhibitor.activated {
-    color: @red;
+    color: @gray;
 }
 
 #battery {
-    color: @green;
-    border-bottom: 2px solid @green;
+    color: @gray;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -120,7 +115,7 @@ button:hover {
 }
 
 #custom-vpn {
-    color: @lavender;
+    color: @gray;
     border-radius: 15px;
     padding-left: 6px;
     padding-right: 6px;
