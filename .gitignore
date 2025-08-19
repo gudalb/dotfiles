@@ -84,3 +84,16 @@ vesktop/
 xbuild/
 xdg-terminals.list
 zed/
+
+# Neovim
+nvim/lazy-lock.json
+nvim/.DS_Store
+nvim/*.log
+nvim/data/
+nvim/.repro
+nvim/debug
+nvim/tt.*
+nvim/.tests
+lua/.DS_Store
+nvim/lua/.DS_Store
+nvim/lua/plugins/.DS_Store
