@@ -1,0 +1,5 @@
+[manager]
+prepend_keymap = [
+  { on = [ "b" ], run = "help", desc = "Show help menu" },
+  { on = [ "g", "s" ], run = "cd /run/media/abe/snabb/downloads/shows", desc = "Go to snabb - shows" },
+]
