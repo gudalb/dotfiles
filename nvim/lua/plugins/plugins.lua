@@ -53,13 +53,4 @@ return {
       "nvim-lua/plenary.nvim",
     },
   },
-  {
-    "greggh/claude-code.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- Required for git operations
-    },
-    config = function()
-      require("claude-code").setup()
-    end,
-  },
 }

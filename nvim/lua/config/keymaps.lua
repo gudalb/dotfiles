@@ -49,5 +49,3 @@ vim.keymap.set("n", "<leader>dq", function()
 
   print("All DAP instances terminated")
 end, { desc = "Force quit all DAP instances" })
-
-map("n", "<leader>cc", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code" })
