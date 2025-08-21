@@ -254,6 +254,7 @@ require('lazy').setup({
 
       local servers = {
         lua_ls = {
+          filetypes = { 'lua' },
           settings = {
             Lua = {
               completion = {
@@ -261,6 +262,9 @@ require('lazy').setup({
               },
             },
           },
+        },
+        ts_ls = {
+          filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
         },
       }
       local ensure_installed = vim.tbl_keys(servers or {})
@@ -281,6 +285,12 @@ require('lazy').setup({
         },
       }
     end,
+  },
+
+  {
+    "seblj/roslyn.nvim",
+    ft = "cs",
+    opts = {},
   },
 
   {
@@ -337,7 +347,7 @@ require('lazy').setup({
     },
     opts = {
       keymap = {
-        preset = 'default',
+        preset = 'enter',
       },
 
       appearance = {
@@ -378,6 +388,14 @@ require('lazy').setup({
   },
 
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = function()
+      require('nvim-autopairs').setup()
+    end,
+  },
 
   {
     'echasnovski/mini.nvim',
