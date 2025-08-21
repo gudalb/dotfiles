@@ -26,7 +26,6 @@ vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
 
-
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -47,7 +46,7 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
-require('config.keymaps')
+require 'config.keymaps'
 
 require('lazy').setup('plugins', {
   ui = {
@@ -68,4 +67,3 @@ require('lazy').setup('plugins', {
     },
   },
 })
-

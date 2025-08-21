@@ -1,6 +1,8 @@
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save file' })
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a', { desc = 'Save file' })
 
 vim.api.nvim_create_autocmd('TermOpen', {
   pattern = '*',
@@ -66,3 +68,7 @@ end, { desc = 'Toggle terminal' })
 vim.keymap.set('n', '<C-,>', function()
   toggle_terminal(vim.v.count > 0 and vim.v.count or 1)
 end, { desc = 'Toggle terminal' })
+vim.keymap.set('t', '<C-,>', function()
+  toggle_terminal(vim.v.count > 0 and vim.v.count or 1)
+end, { desc = 'Toggle terminal' })
+
