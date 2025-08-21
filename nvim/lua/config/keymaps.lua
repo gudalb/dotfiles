@@ -30,14 +30,12 @@ local function toggle_terminal(term_id)
     end
   end
 
-  -- Check if any other terminals are open
   local other_term_open = false
   for id, buf in pairs(terminal_buffers) do
     if id ~= term_id and vim.api.nvim_buf_is_valid(buf) then
       local wins = vim.fn.win_findbuf(buf)
       if #wins > 0 then
         other_term_open = true
-        -- Focus the existing terminal window and split vertically from it
         vim.api.nvim_set_current_win(wins[1])
         vim.cmd 'rightbelow vsplit'
         break
@@ -46,7 +44,6 @@ local function toggle_terminal(term_id)
   end
 
   if not other_term_open then
-    -- First terminal, split horizontally at bottom
     vim.cmd 'botright split'
     local win_height = math.floor(vim.o.lines * 0.2)
     vim.api.nvim_win_set_height(0, win_height)
@@ -72,3 +69,33 @@ vim.keymap.set('t', '<C-,>', function()
   toggle_terminal(vim.v.count > 0 and vim.v.count or 1)
 end, { desc = 'Toggle terminal' })
 
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+map('n', '<F5>', "<Cmd>lua require'dap'.continue()<CR>")
+map('n', '<F6>', "<Cmd>lua require('neotest').run.run({strategy = 'dap'})<CR>", opts)
+map('n', '<F9>', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+map('n', '<leader>dd', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", { noremap = true, silent = true, desc = '[D]ebug [D]oggle breakpoint' })
+map('n', '<F10>', "<Cmd>lua require'dap'.step_over()<CR>", opts)
+map('n', '<F11>', "<Cmd>lua require'dap'.step_into()<CR>", opts)
+map('n', '<F8>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
+map('n', '<leader>dr', "<Cmd>lua require'dap'.repl.open()<CR>", opts)
+map('n', '<leader>dl', "<Cmd>lua require'dap'.run_last()<CR>", opts)
+map('n', '<leader>dc', "<Cmd>lua require'dap'.continue()<CR>", { noremap = true, silent = true, desc = '[D]ebug [C]ontinue' })
+map('n', '<leader>dC', "<Cmd>lua require'dap'.clear_breakpoints()<CR>", { noremap = true, silent = true, desc = '[D]ebug [C]lear all breakpoints' })
+map('n', '<leader>dt', "<Cmd>lua require('neotest').run.run({strategy = 'dap'})<CR>", { noremap = true, silent = true, desc = 'debug nearest test' })
+vim.keymap.set('n', '<leader>dq', function()
+  local dap = require 'dap'
+
+  if dap.session() then
+    dap.terminate()
+  end
+
+  dap.close()
+
+  local dapui_ok, dapui = pcall(require, 'dapui')
+  if dapui_ok then
+    dapui.close()
+  end
+
+  print 'All DAP instances terminated'
+end, { desc = 'Force quit all DAP instances' })

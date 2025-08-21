@@ -25,6 +25,11 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
+vim.go.background = 'dark'
+vim.g.snacks_animate = false
+vim.opt.shiftwidth = 4
+vim.g.dotnet_errors_only = true
+vim.g.dotnet_show_project_file = false
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -46,8 +51,6 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
-require 'config.keymaps'
-
 require('lazy').setup('plugins', {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
@@ -67,3 +70,18 @@ require('lazy').setup('plugins', {
     },
   },
 })
+
+require("neotest").setup({
+  adapters = {
+    require("neotest-dotnet"),
+  },
+})
+
+-- Load all config files after plugins are loaded
+local config_path = vim.fn.stdpath('config') .. '/lua/config'
+for _, file in ipairs(vim.fn.readdir(config_path)) do
+  if file:match('%.lua$') then
+    local module = file:gsub('%.lua$', '')
+    require('config.' .. module)
+  end
+end

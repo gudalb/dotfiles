@@ -75,6 +75,7 @@ return {
       vim.keymap.set('n', '<leader>sh', fzf.helptags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', fzf.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', fzf.files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>ff', fzf.files, { desc = '[F]ind [F]iles' })
       vim.keymap.set('n', '<leader>ss', fzf.builtin, { desc = '[S]earch [S]elect fzf-lua' })
       vim.keymap.set('n', '<leader>sw', fzf.grep_cword, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', fzf.live_grep, { desc = '[S]earch by [G]rep' })
@@ -421,7 +422,6 @@ return {
       { '<leader>e', '<cmd>NvimTreeToggle<cr>', desc = 'Toggle file explorer' },
     },
   },
-
   {
     'kdheepak/lazygit.nvim',
     cmd = {
@@ -436,6 +436,47 @@ return {
     },
     keys = {
       { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
+    },
+  },
+  {
+    'mfussenegger/nvim-dap',
+    dependencies = {
+      'rcarriga/nvim-dap-ui',
+    },
+    config = function()
+      require 'config.nvim-dap'
+    end,
+    event = 'VeryLazy',
+  },
+  { 'nvim-neotest/nvim-nio' },
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = {
+      'mfussenegger/nvim-dap',
+    },
+    config = function()
+      require 'config.nvim-dap-ui'
+    end,
+  },
+  {
+    'nvim-neotest/neotest',
+    requires = {
+      {
+        'Issafalcon/neotest-dotnet',
+      },
+    },
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+      'nvim-lua/plenary.nvim',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+  },
+  {
+    'Issafalcon/neotest-dotnet',
+    lazy = false,
+    dependencies = {
+      'nvim-neotest/neotest',
     },
   },
 }
