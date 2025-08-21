@@ -160,7 +160,15 @@ require('lazy').setup({
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      { 'mason-org/mason.nvim', opts = {} },
+      { 
+        'mason-org/mason.nvim', 
+        opts = {
+          registries = {
+            "github:mason-org/mason-registry",
+            "github:Crashdummyy/mason-registry",
+          },
+        }
+      },
       'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
@@ -270,6 +278,14 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua',
+        'csharpier',
+        'html-lsp',
+        'css-lsp',
+        'prettier',
+        'json-lsp',
+        'netcoredbg',
+        'typescript-language-server',
+        'roslyn',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
