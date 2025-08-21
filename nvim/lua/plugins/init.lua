@@ -448,7 +448,6 @@ return {
     end,
     event = 'VeryLazy',
   },
-  { 'nvim-neotest/nvim-nio' },
   {
     'rcarriga/nvim-dap-ui',
     dependencies = {
