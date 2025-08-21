@@ -119,7 +119,11 @@ require('lazy').setup({
     dependencies = {
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
-    opts = {},
+    opts = {
+      buffers = {
+        formatter = "path.filename_first",
+      },
+    },
     config = function(_, opts)
       require('fzf-lua').setup(opts)
 
