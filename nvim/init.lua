@@ -192,7 +192,19 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sd', fzf.diagnostics_document, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', fzf.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', fzf.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', fzf.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader><leader>', function()
+        -- If current window is a terminal, find a non-terminal window
+        if vim.bo.buftype == 'terminal' then
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            local buf = vim.api.nvim_win_get_buf(win)
+            if vim.bo[buf].buftype ~= 'terminal' then
+              vim.api.nvim_set_current_win(win)
+              break
+            end
+          end
+        end
+        fzf.buffers()
+      end, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>/', fzf.blines, { desc = '[/] Fuzzily search in current buffer' })
       vim.keymap.set('n', '<leader>s/', function()
         fzf.live_grep { resume = true, rg_opts = '--type-add web:*.{html,css,js}' }
