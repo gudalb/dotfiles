@@ -83,6 +83,7 @@ map('n', '<leader>dc', "<Cmd>lua require'dap'.continue()<CR>", { noremap = true,
 map('n', '<leader>dC', "<Cmd>lua require'dap'.clear_breakpoints()<CR>", { noremap = true, silent = true, desc = '[D]ebug [C]lear all breakpoints' })
 map('n', '<leader>ds', "<Cmd>Neotest summary<CR>", { noremap = true, silent = true, desc = '[D]ebug test [S]ummary' })
 map('n', '<leader>dt', "<Cmd>lua require('neotest').run.run({strategy = 'dap'})<CR>", { noremap = true, silent = true, desc = 'debug nearest test' })
+map('n', '<leader>dT', vim.diagnostic.open_float, { noremap = true, silent = true, desc = '[D]iagnostic [T]ext' })
 vim.keymap.set('n', '<leader>dq', function()
   local dap = require 'dap'
 
