@@ -118,7 +118,7 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
       {
-        'mason-org/mason.nvim',
+        'williamboman/mason.nvim',
         opts = {
           registries = {
             'github:mason-org/mason-registry',
@@ -126,7 +126,7 @@ return {
           },
         },
       },
-      'mason-org/mason-lspconfig.nvim',
+      'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
       'saghen/blink.cmp',
