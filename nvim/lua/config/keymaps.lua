@@ -102,6 +102,7 @@ vim.keymap.set('n', '<leader>dq', function()
 end, { desc = 'Force quit all DAP instances' })
 
 -- LSP keybindings
+map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ctions' })
 map('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
 map('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })
 map('n', 'gi', vim.lsp.buf.implementation, { desc = '[G]oto [I]mplementation' })
