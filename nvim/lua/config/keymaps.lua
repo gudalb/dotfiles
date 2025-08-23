@@ -71,7 +71,6 @@ end, { desc = 'Toggle terminal' })
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
-map('n', '<F5>', "<Cmd>lua require'dap'.continue()<CR>")
 map('n', '<F6>', "<Cmd>lua require('neotest').run.run({strategy = 'dap'})<CR>", opts)
 map('n', '<F9>', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
 map('n', '<leader>dd', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", { noremap = true, silent = true, desc = '[D]ebug [D]oggle breakpoint' })
@@ -84,6 +83,7 @@ map('n', '<leader>dc', "<Cmd>lua require'dap'.continue()<CR>", { noremap = true,
 map('n', '<leader>dC', "<Cmd>lua require'dap'.clear_breakpoints()<CR>", { noremap = true, silent = true, desc = '[D]ebug [C]lear all breakpoints' })
 map('n', '<leader>ds', "<Cmd>Neotest summary<CR>", { noremap = true, silent = true, desc = '[D]ebug test [S]ummary' })
 map('n', '<leader>dt', "<Cmd>lua require('neotest').run.run({strategy = 'dap'})<CR>", { noremap = true, silent = true, desc = 'debug nearest test' })
+map('n', '<leader>dT', vim.diagnostic.open_float, { noremap = true, silent = true, desc = '[D]iagnostic [T]ext' })
 vim.keymap.set('n', '<leader>dq', function()
   local dap = require 'dap'
 
@@ -100,3 +100,11 @@ vim.keymap.set('n', '<leader>dq', function()
 
   print 'All DAP instances terminated'
 end, { desc = 'Force quit all DAP instances' })
+
+-- LSP keybindings
+map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ctions' })
+map('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
+map('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })
+map('n', 'gi', vim.lsp.buf.implementation, { desc = '[G]oto [I]mplementation' })
+map('n', '<leader>gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })
+map('n', '<leader>gi', vim.lsp.buf.implementation, { desc = '[G]oto [I]mplementation' })
