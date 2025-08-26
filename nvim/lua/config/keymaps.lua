@@ -101,6 +101,10 @@ vim.keymap.set('n', '<leader>dq', function()
   print 'All DAP instances terminated'
 end, { desc = 'Force quit all DAP instances' })
 
+-- Move selected lines up and down
+map('v', '<A-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
+map('v', '<A-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
+
 -- LSP keybindings
 map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ctions' })
 map('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
