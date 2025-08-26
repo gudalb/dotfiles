@@ -105,6 +105,10 @@ end, { desc = 'Force quit all DAP instances' })
 map('v', '<A-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
 map('v', '<A-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
 
+-- Indent/dedent in visual mode
+map('v', '<', '<gv', { desc = 'Dedent selection' })
+map('v', '>', '>gv', { desc = 'Indent selection' })
+
 -- LSP keybindings
 map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ctions' })
 map('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
