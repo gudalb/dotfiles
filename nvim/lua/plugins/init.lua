@@ -267,6 +267,12 @@ return {
   },
 
   {
+    'DestopLine/boilersharp.nvim',
+    ft = 'cs',
+    opts = {},
+  },
+
+  {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
