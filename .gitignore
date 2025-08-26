@@ -97,3 +97,4 @@ nvim/.tests
 lua/.DS_Store
 nvim/lua/.DS_Store
 nvim/lua/plugins/.DS_Store
+.DS_Store
