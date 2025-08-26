@@ -2,6 +2,7 @@ local ls = require('luasnip')
 local s = ls.snippet
 local i = ls.insert_node
 local f = ls.function_node
+local t = ls.text_node
 
 -- Function to get namespace from file path
 local function get_namespace()
@@ -39,7 +40,7 @@ local function get_namespace()
   return project_name .. '.' .. namespace_suffix
 end
 
--- C# namespace snippet
+-- C# snippets
 ls.add_snippets('cs', {
   s('namespace', {
     f(function() return 'namespace ' .. get_namespace() .. ';' end),
@@ -48,5 +49,14 @@ ls.add_snippets('cs', {
   s('ns', {
     f(function() return 'namespace ' .. get_namespace() .. ';' end),
     i(0)
-  })
+  }),
+  s('getset', {
+    t('{ get; set; }'), i(0)
+  }),
+  s('get', {
+    t('{ get; }'), i(0)
+  }),
+  s('getinit', {
+    t('{ get; init; }'), i(0)
+  }),
 })
