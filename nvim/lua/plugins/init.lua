@@ -427,11 +427,12 @@ return {
 
           vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts 'Close Directory')
           vim.keymap.set('n', 'l', api.node.open.edit, opts 'Open')
+          vim.keymap.set('n', 'Z', api.tree.collapse_all, opts 'Collapse All')
         end,
       }
     end,
     keys = {
-      { '<leader>e', '<cmd>NvimTreeToggle<cr>', desc = 'Toggle file explorer' },
+      { '<leader>e', '<cmd>NvimTreeFindFileToggle<cr>', desc = 'Toggle file explorer' },
     },
   },
   {
