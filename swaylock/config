@@ -33,3 +33,5 @@ caps-lock-bs-hl-color=ee2e24
 disable-caps-lock-text
 text-caps-lock-color=009ddc
 scaling=fill
+ignore-empty-password
+show-failed-attempts
