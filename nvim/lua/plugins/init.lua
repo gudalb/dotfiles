@@ -416,6 +416,9 @@ return {
     'nvim-tree/nvim-tree.lua',
     config = function()
       require('nvim-tree').setup {
+        view = {
+          width = 40,
+        },
         on_attach = function(bufnr)
           local api = require 'nvim-tree.api'
 
