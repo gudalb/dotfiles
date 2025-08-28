@@ -307,6 +307,8 @@ return {
         typescriptreact = { 'prettierd' },
         html = { 'prettierd' },
         htmlangular = { 'prettierd' },
+        css = { 'prettierd' },
+        scss = { 'prettierd' },
       },
     },
   },
