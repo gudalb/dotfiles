@@ -310,6 +310,11 @@ return {
         css = { 'prettierd' },
         scss = { 'prettierd' },
       },
+      formatters = {
+        prettierd = {
+          args = { '--print-width', '100' },
+        },
+      },
     },
   },
 
@@ -432,6 +437,11 @@ return {
       require('nvim-tree').setup {
         view = {
           width = 40,
+        },
+        actions = {
+          open_file = {
+            quit_on_open = true,
+          },
         },
         on_attach = function(bufnr)
           local api = require 'nvim-tree.api'
