@@ -309,10 +309,15 @@ return {
         htmlangular = { 'prettierd' },
         css = { 'prettierd' },
         scss = { 'prettierd' },
+        json = { 'prettierd' },
       },
       formatters = {
         prettierd = {
           args = { '--print-width', '100' },
+        },
+        prettierd_json = {
+          inherit = 'prettierd',
+          args = { '--tab-width', '2' },
         },
       },
     },
@@ -437,6 +442,7 @@ return {
       require('nvim-tree').setup {
         view = {
           width = 40,
+          adaptive_size = true,
         },
         actions = {
           open_file = {
