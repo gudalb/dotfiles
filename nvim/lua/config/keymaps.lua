@@ -8,6 +8,13 @@ vim.api.nvim_create_autocmd('TermOpen', {
   pattern = '*',
   callback = function()
     vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = true, desc = 'Close terminal' })
+    vim.keymap.set('n', 'gf', function()
+      local file_path = vim.fn.expand('<cfile>')
+      if file_path and file_path ~= '' then
+        vim.cmd('wincmd p')
+        vim.cmd('edit ' .. file_path)
+      end
+    end, { buffer = true, desc = 'Go to file in main buffer' })
   end,
 })
 
