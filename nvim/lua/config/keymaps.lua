@@ -9,9 +9,9 @@ vim.api.nvim_create_autocmd('TermOpen', {
   callback = function()
     vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = true, desc = 'Close terminal' })
     vim.keymap.set('n', 'gf', function()
-      local file_path = vim.fn.expand('<cfile>')
+      local file_path = vim.fn.expand '<cfile>'
       if file_path and file_path ~= '' then
-        vim.cmd('wincmd p')
+        vim.cmd 'wincmd p'
         vim.cmd('edit ' .. file_path)
       end
     end, { buffer = true, desc = 'Go to file in main buffer' })
@@ -88,7 +88,7 @@ map('n', '<leader>dr', "<Cmd>lua require'dap'.repl.open()<CR>", opts)
 map('n', '<leader>dl', "<Cmd>lua require'dap'.run_last()<CR>", opts)
 map('n', '<leader>dc', "<Cmd>lua require'dap'.continue()<CR>", { noremap = true, silent = true, desc = '[D]ebug [C]ontinue' })
 map('n', '<leader>dC', "<Cmd>lua require'dap'.clear_breakpoints()<CR>", { noremap = true, silent = true, desc = '[D]ebug [C]lear all breakpoints' })
-map('n', '<leader>ds', "<Cmd>Neotest summary<CR>", { noremap = true, silent = true, desc = '[D]ebug test [S]ummary' })
+map('n', '<leader>ds', '<Cmd>Neotest summary<CR>', { noremap = true, silent = true, desc = '[D]ebug test [S]ummary' })
 map('n', '<leader>dt', "<Cmd>lua require('neotest').run.run({strategy = 'dap'})<CR>", { noremap = true, silent = true, desc = 'debug nearest test' })
 map('n', '<leader>da', "<Cmd>lua require('neotest').run.run(vim.fn.getcwd())<CR>", { noremap = true, silent = true, desc = 'run [A]ll tests' })
 map('n', '<leader>do', "<Cmd>lua require('neotest').output.open({ enter = true })<CR>", { noremap = true, silent = true, desc = 'show test [O]utput' })
@@ -110,6 +110,11 @@ vim.keymap.set('n', '<leader>dq', function()
 
   print 'All DAP instances terminated'
 end, { desc = 'Force quit all DAP instances' })
+
+local dapui = require 'dapui'
+map('n', '<leader>du', function()
+  dapui.toggle()
+end, { noremap = true, silent = true, desc = 'Toggle DAP UI' })
 
 -- Move selected lines up and down
 map('v', '<A-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
