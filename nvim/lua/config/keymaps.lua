@@ -90,6 +90,9 @@ map('n', '<leader>dc', "<Cmd>lua require'dap'.continue()<CR>", { noremap = true,
 map('n', '<leader>dC', "<Cmd>lua require'dap'.clear_breakpoints()<CR>", { noremap = true, silent = true, desc = '[D]ebug [C]lear all breakpoints' })
 map('n', '<leader>ds', "<Cmd>Neotest summary<CR>", { noremap = true, silent = true, desc = '[D]ebug test [S]ummary' })
 map('n', '<leader>dt', "<Cmd>lua require('neotest').run.run({strategy = 'dap'})<CR>", { noremap = true, silent = true, desc = 'debug nearest test' })
+map('n', '<leader>da', "<Cmd>lua require('neotest').run.run(vim.fn.getcwd())<CR>", { noremap = true, silent = true, desc = 'run [A]ll tests' })
+map('n', '<leader>do', "<Cmd>lua require('neotest').output.open({ enter = true })<CR>", { noremap = true, silent = true, desc = 'show test [O]utput' })
+map('n', '<leader>dp', "<Cmd>lua require('neotest').output_panel.toggle()<CR>", { noremap = true, silent = true, desc = 'toggle output [P]anel' })
 map('n', '<leader>dT', vim.diagnostic.open_float, { noremap = true, silent = true, desc = '[D]iagnostic [T]ext' })
 vim.keymap.set('n', '<leader>dq', function()
   local dap = require 'dap'
