@@ -228,33 +228,10 @@ return {
             },
           },
         },
-        ts_ls = {
-          filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
-        },
-        html = {
-          filetypes = { 'html', 'htmlangular' },
-        },
-        angularls = {
-          filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' },
-        },
-        cssls = {
-          filetypes = { 'css', 'scss', 'less' },
-        },
-        jsonls = {
-          filetypes = { 'json' },
-        },
       }
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua',
-        'csharpier',
-        'html-lsp',
-        'css-lsp',
-        'prettierd',
-        'json-lsp',
-        'netcoredbg',
-        'typescript-language-server',
-        'angular-language-server',
         'roslyn',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -314,15 +291,6 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        javascript = { 'prettierd' },
-        javascriptreact = { 'prettierd' },
-        typescript = { 'prettierd' },
-        typescriptreact = { 'prettierd' },
-        html = { 'prettierd' },
-        htmlangular = { 'prettierd' },
-        css = { 'prettierd' },
-        scss = { 'prettierd' },
-        json = { 'prettierd' },
       },
       formatters = {
         prettierd = {
