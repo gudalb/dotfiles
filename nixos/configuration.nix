@@ -42,6 +42,11 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
+  # Enable Bluetooth hardware support
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "se";
