@@ -104,9 +104,29 @@
       exec-once = [
         "waybar"
         "mako"
-        # "swayidle -w timeout 300 'swaylock -f' timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock -f'"
       ];
     };
+  };
+
+  services.swayidle = {
+    enable = true;
+    timeouts = [
+      {
+        timeout = 300; # 5 minutes
+        command = "${pkgs.swaylock}/bin/swaylock -f";
+      }
+      {
+        timeout = 310; # 10 seconds after lock
+        command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+        resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+      }
+    ];
+    events = [
+      {
+        event = "before-sleep";
+        command = "${pkgs.swaylock}/bin/swaylock -f";
+      }
+    ];
   };
 
   home.packages = with pkgs; [
