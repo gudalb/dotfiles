@@ -3,18 +3,15 @@
 {
   home.username = "abe";
   home.homeDirectory = "/home/abe";
-  home.stateVersion = "25.05"; # Replace with your actual version from nixos-version
+  home.stateVersion = "25.05";
 
-  # Configure Hyprland via Home Manager
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     
     settings = {
-      # Monitor setup
       monitor = ",highrr,auto,auto";
       
-      # Input configuration
       input = {
         kb_layout = "se";
         kb_options = "caps:escape";
@@ -25,7 +22,6 @@
         sensitivity = 0;
       };
       
-      # General settings
       general = {
         gaps_in = 0;
         gaps_out = 0;
@@ -36,30 +32,24 @@
         allow_tearing = false;
       };
       
-      # Animations
       animations = {
         enabled = false;
       };
       
-      # Layout
       dwindle = {
         pseudotile = true;
         preserve_split = true;
       };
       
-      # Misc
       misc = {
         force_default_wallpaper = 0;
         background_color = "0x1e1e2e";
       };
       
-      # Window rules
       windowrulev2 = "suppressevent maximize, class:.*";
       
-      # Set mod key
       "$mainMod" = "SUPER";
       
-      # Keybinds
       bind = [
         "$mainMod, Q, killactive,"
         "$mainMod, H, movefocus, l"
@@ -67,7 +57,6 @@
         "$mainMod, K, movefocus, u"
         "$mainMod, J, movefocus, d"
         
-        # Workspace switching
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -79,7 +68,6 @@
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
         
-        # Move active window to workspace
         "$mainMod SHIFT, 1, movetoworkspace, 1"
         "$mainMod SHIFT, 2, movetoworkspace, 2"
         "$mainMod SHIFT, 3, movetoworkspace, 3"
@@ -91,35 +79,28 @@
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
         
-        # Application launchers
         "$mainMod, Return, exec, kitty"
         "$mainMod, E, exec, kitty -e yazi"
         "$mainMod, T, exec, kitty -e nvim"
         "$mainMod, B, exec, firefox --new-window"
         "$mainMod, D, exec, fuzzel"
         
-        # Screenshot
         ", Print, exec, grim -g \"$(slurp)\" - | wl-copy"
         
-        # Toggle floating/tiling mode
         "$mainMod, V, togglefloating,"
         
-        # Toggle fullscreen
         "$mainMod, F, fullscreen,"
         
-        # Lock screen
         "$mainMod SHIFT, L, exec, swaylock -f"
 
 	"ALT, Tab, workspace, previous"
       ];
       
-      # Move/resize windows with mouse
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
       ];
       
-      # Auto-start applications
       exec-once = [
         "waybar"
         "mako"
@@ -128,7 +109,6 @@
     };
   };
 
-  # Essential packages for your setup
   home.packages = with pkgs; [
     # UI and system
     fuzzel
@@ -203,9 +183,12 @@
       sdk_8_0
       sdk_9_0
     ])
+
+    (python3.withPackages (ps: with ps; [
+      requests
+    ]))
   ];
 
-  # Configure mako notifications                                                                                         
   services.mako = { 
     enable = true;
     settings = {
@@ -214,7 +197,6 @@
     };
   };
 
-  # Configure fuzzel
   programs.fuzzel = {
     enable = true;
     settings = {
@@ -241,5 +223,5 @@
     userName  = "Albin Gudmundsson";
     userEmail = "albin.gudmundsson@gmail.com";
   };
-
 }
+
