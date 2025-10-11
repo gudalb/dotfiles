@@ -145,9 +145,6 @@
     # Terminal utilities
     yazi
     
-    # Browser
-    firefox
-    
     # Screenshots and clipboard
     grim
     slurp
@@ -162,6 +159,8 @@
     p7zip
     pavucontrol
     wget
+    unzip
+    firefox
     
     # Gaming platforms
     bottles
@@ -197,13 +196,14 @@
     gnumake
     libgcc
     pkg-config
+    lazygit
     
     # Development runtimes
     (with pkgs.dotnetCorePackages; combinePackages [
       sdk_8_0
       sdk_9_0
     ])
-];
+  ];
 
   # Configure mako notifications                                                                                         
   services.mako = { 
