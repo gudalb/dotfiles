@@ -228,21 +228,6 @@ return {
             },
           },
         },
-        ts_ls = {
-          filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
-        },
-        html = {
-          filetypes = { 'html', 'htmlangular' },
-        },
-        angularls = {
-          filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' },
-        },
-        cssls = {
-          filetypes = { 'css', 'scss', 'less' },
-        },
-        jsonls = {
-          filetypes = { 'json' },
-        },
       }
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
