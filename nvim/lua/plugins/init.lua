@@ -232,6 +232,15 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua',
+        'ruff',
+        'csharpier',
+        'html-lsp',
+        'css-lsp',
+        'prettierd',
+        'json-lsp',
+        'netcoredbg',
+        'typescript-language-server',
+        'angular-language-server',
         'roslyn',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -291,6 +300,16 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        python = { 'ruff_format', 'ruff_organize_imports' },
+        javascript = { 'prettierd' },
+        javascriptreact = { 'prettierd' },
+        typescript = { 'prettierd' },
+        typescriptreact = { 'prettierd' },
+        html = { 'prettierd' },
+        htmlangular = { 'prettierd' },
+        css = { 'prettierd' },
+        scss = { 'prettierd' },
+        json = { 'prettierd' },
       },
       formatters = {
         prettierd = {
@@ -425,6 +444,10 @@ return {
           width = 40,
           adaptive_size = true,
         },
+        filters = {
+          dotfiles = true,
+          git_ignored = true,
+        },
         actions = {
           open_file = {
             quit_on_open = true,
@@ -442,6 +465,10 @@ return {
           vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts 'Close Directory')
           vim.keymap.set('n', 'l', api.node.open.edit, opts 'Open')
           vim.keymap.set('n', 'Z', api.tree.collapse_all, opts 'Collapse All')
+          vim.keymap.set('n', '.', function()
+            api.tree.toggle_hidden_filter()
+            api.tree.toggle_gitignore_filter()
+          end, opts 'Toggle Hidden & Git-ignored Files')
         end,
       }
     end,
