@@ -133,7 +133,6 @@
     # UI and system
     fuzzel
     mako
-    waybar
     
     # Terminal
     kitty
@@ -197,7 +196,9 @@
     libgcc
     pkg-config
     lazygit
-    
+    k9s
+    jq
+
     # Development runtimes
     (with pkgs.dotnetCorePackages; combinePackages [
       sdk_8_0
@@ -208,6 +209,14 @@
       requests
     ]))
   ];
+
+ programs.waybar = {
+    enable = true;
+    settings = {
+      mainBar = builtins.fromJSON (builtins.readFile ./waybar/config.json);
+    };
+    style = builtins.readFile ./waybar/style.css;
+  };
 
   services.mako = { 
     enable = true;
