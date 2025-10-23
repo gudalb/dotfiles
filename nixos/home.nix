@@ -251,6 +251,27 @@
     };
   };
 
+  # XDG desktop entry for yazi file manager
+  xdg.desktopEntries.yazi = {
+    name = "Yazi";
+    comment = "Blazing fast terminal file manager";
+    exec = "kitty -e yazi %F";
+    icon = "folder";
+    terminal = false;
+    type = "Application";
+    categories = [ "System" "FileManager" ];
+    mimeType = [ "inode/directory" ];
+  };
+
+  # Set yazi as default file manager
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = [ "yazi.desktop" ];
+      "application/x-gnome-saved-search" = [ "yazi.desktop" ];
+    };
+  };
+
   programs.home-manager.enable = true;
 
   programs.git = {
