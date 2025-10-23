@@ -199,11 +199,17 @@
     k9s
     jq
 
+    # misc
+    protonvpn-gui
+    qbittorrent
+
     # Development runtimes
     (with pkgs.dotnetCorePackages; combinePackages [
       sdk_8_0
       sdk_9_0
     ])
+
+    nodejs_22
 
     (python3.withPackages (ps: with ps; [
       requests
