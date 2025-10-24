@@ -21,7 +21,7 @@
         };
         sensitivity = 0;
       };
-      
+
       general = {
         gaps_in = 0;
         gaps_out = 0;
@@ -42,10 +42,9 @@
       };
       
       misc = {
-        force_default_wallpaper = 0;
-        background_color = "0x1e1e2e";
+	force_default_wallpaper = 0;
       };
-      
+
       windowrulev2 = "suppressevent maximize, class:.*";
       
       "$mainMod" = "SUPER";
@@ -133,7 +132,7 @@
     # UI and system
     fuzzel
     mako
-    
+
     # Terminal
     kitty
     
@@ -202,6 +201,7 @@
     # misc
     protonvpn-gui
     qbittorrent
+    mpv
 
     # Development runtimes
     (with pkgs.dotnetCorePackages; combinePackages [
@@ -251,7 +251,6 @@
     };
   };
 
-  # XDG desktop entry for yazi file manager
   xdg.desktopEntries.yazi = {
     name = "Yazi";
     comment = "Blazing fast terminal file manager";
@@ -263,7 +262,6 @@
     mimeType = [ "inode/directory" ];
   };
 
-  # Set yazi as default file manager
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
@@ -276,8 +274,10 @@
 
   programs.git = {
     enable = true;
-    userName  = "Albin Gudmundsson";
-    userEmail = "albin.gudmundsson@gmail.com";
+    settings.user = {
+      name  = "Albin Gudmundsson";
+      email = "albin.gudmundsson@gmail.com";
+    };
   };
 }
 
