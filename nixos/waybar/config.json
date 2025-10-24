@@ -11,12 +11,8 @@
   ],
   "modules-right": [
     "pulseaudio",
-    "network",
-    "cpu",
-    "memory",
     "battery",
-    "clock",
-    "tray"
+    "clock"
   ],
   "hyprland/workspaces": {
     "disable-scroll": true,
