@@ -197,6 +197,9 @@
     lazygit
     k9s
     jq
+    azure-cli
+    kubelogin
+    kubectl
 
     # misc
     protonvpn-gui
@@ -249,6 +252,12 @@
         border = "33ccffff";
       };
     };
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
   };
 
   xdg.desktopEntries.yazi = {
