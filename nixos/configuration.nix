@@ -21,13 +21,9 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Europe/Stockholm";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -42,33 +38,26 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
-  # Enable Bluetooth hardware support
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
-  # Configure keymap in X11
   services.xserver.xkb = {
     layout = "se";
     variant = "";
   };
 
-  # Configure console keymap
   console.keyMap = "sv-latin1";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.abe = {
     isNormalUser = true;
     description = "abe";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "storage" ];
     packages = with pkgs; [];
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim 
     wget
@@ -87,15 +76,15 @@
   };
 
   users.users."abe".openssh.authorizedKeys.keys = [
-    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5cgxnudR4k79xZ5OeNOHATZNJj0HVkwYb68UtVBEDyMjvDB5pffxNO7WY4mseiepuqTlINUoJjOjIBSKKn8gsIPLpH4+2ErBpQnkz3Ci6OEFWfzzAkdM0lKN39j/F4f1JqNneNHloUBxIL7g9WwH1Q9zKJw0fD1rgilRjA9EUs1ri+MMUCENVRQBprdQjgvjeHgK/oKzgM3Ysod6xG393wvgvSrM4Ogeoz8iwPDhNR4EsXur6CRTuRwfIJCbwt8rAxeu731dbYokzzjqZUTcXM0LEcQN0lciNM2Czdt5v0C/k4kJ50WmAFkrPfaYma5LNGeyk5gL5z5EgDjzUJY8lNPB8E2MdrNQKCOlObCsF3J3paPrKyu8nU/lHT3pQEVZD8Wpe0Yx+0BYd9SVLsSXH83wW4lyv331GJ8cY6eZjrffmDqy+10io6J4YNGcI0QD/d47qqNC27Q2XGkXQW6nhbMmFTwvW1j3uQjD+NeQI91fBVUAV3H7w71WDZvbFq88= agu@MacBookPro" # content of authorized_keys file
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5cgxnudR4k79xZ5OeNOHATZNJj0HVkwYb68UtVBEDyMjvDB5pffxNO7WY4mseiepuqTlINUoJjOjIBSKKn8gsIPLpH4+2ErBpQnkz3Ci6OEFWfzzAkdM0lKN39j/F4f1JqNneNHloUBxIL7g9WwH1Q9zKJw0fD1rgilRjA9EUs1ri+MMUCENVRQBprdQjgvjeHgK/oKzgM3Ysod6xG393wvgvSrM4Ogeoz8iwPDhNR4EsXur6CRTuRwfIJCbwt8rAxeu731dbYokzzjqZUTcXM0LEcQN0lciNM2Czdt5v0C/k4kJ50WmAFkrPfaYma5LNGeyk5gL5z5EgDjzUJY8lNPB8E2MdrNQKCOlObCsF3J3paPrKyu8nU/lHT3pQEVZD8Wpe0Yx+0BYd9SVLsSXH83wW4lyv331GJ8cY6eZjrffmDqy+10io6J4YNGcI0QD/d47qqNC27Q2XGkXQW6nhbMmFTwvW1j3uQjD+NeQI91fBVUAV3H7w71WDZvbFq88= agu@MacBookPro" 
   ];
 
   fonts = {
   enableDefaultPackages = true;
   packages = with pkgs; [
-    font-awesome           
+    font-awesome
     material-design-icons 
-    material-icons       
+    material-icons
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
@@ -128,7 +117,6 @@
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
-  # Gaming and graphics optimizations
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -138,7 +126,9 @@
   programs.gamemode.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  programs.dconf.enable = true; # Required for some games
+  programs.dconf.enable = true; 
 
   services.udisks2.enable = true;
+
+  boot.supportedFilesystems = [ "ntfs" ];
 }

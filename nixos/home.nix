@@ -235,6 +235,13 @@
     };
   };
 
+  services.udiskie = {
+    enable = true;
+    automount = true;
+    notify = true;
+    tray = "auto";
+  };
+
   programs.fuzzel = {
     enable = true;
     settings = {
