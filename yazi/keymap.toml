@@ -5,4 +5,11 @@ prepend_keymap = [
   { on = [ "g", "w" ], run = "cd '/home/abe/Games/battlenet/drive_c/Program Files (x86)/World of Warcraft'", desc = "Go to WoW" },
   { on = [ "g", "t" ], run = "cd ~/.local/share/Trash", desc = "Go to Trash" },
   { on = [ "<C-w>" ], run = "close", desc = "Close current tab" },
+  { on = [ "c", "f" ], run = '''shell "
+  if [[ \"$OSTYPE\" == \"darwin\"* ]]; then
+    osascript -e 'set the clipboard to (POSIX file \"'\"$0\"'\") as «class furl»'
+  else
+    echo -n \"file://$0\" | wl-copy -t text/uri-list
+  fi
+" --confirm''', desc = "Copy file to clipboard" },
 ]
