@@ -185,6 +185,7 @@
     mesa
     vulkan-loader
     vulkan-tools
+    protonplus
     
     # Development tools
     appimage-run
