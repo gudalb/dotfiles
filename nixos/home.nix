@@ -7,18 +7,17 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    
+    package =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+
     settings = {
       monitor = ",highrr,auto,auto";
-      
+
       input = {
         kb_layout = "se";
         kb_options = "caps:escape";
         follow_mouse = 1;
-        touchpad = {
-          natural_scroll = false;
-        };
+        touchpad = { natural_scroll = false; };
         sensitivity = 0;
       };
 
@@ -31,31 +30,27 @@
         layout = "dwindle";
         allow_tearing = false;
       };
-      
-      animations = {
-        enabled = false;
-      };
-      
+
+      animations = { enabled = false; };
+
       dwindle = {
         pseudotile = true;
         preserve_split = true;
       };
-      
-      misc = {
-	force_default_wallpaper = 0;
-      };
+
+      misc = { force_default_wallpaper = 0; };
 
       windowrulev2 = "suppressevent maximize, class:.*";
-      
+
       "$mainMod" = "SUPER";
-      
+
       bind = [
         "$mainMod, Q, killactive,"
         "$mainMod, H, movefocus, l"
         "$mainMod, L, movefocus, r"
         "$mainMod, K, movefocus, u"
         "$mainMod, J, movefocus, d"
-        
+
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -66,7 +61,7 @@
         "$mainMod, 8, workspace, 8"
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
-        
+
         "$mainMod SHIFT, 1, movetoworkspace, 1"
         "$mainMod SHIFT, 2, movetoworkspace, 2"
         "$mainMod SHIFT, 3, movetoworkspace, 3"
@@ -77,33 +72,30 @@
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
-        
+
         "$mainMod, Return, exec, kitty"
         "$mainMod, E, exec, kitty -e yazi"
         "$mainMod, T, exec, kitty -e nvim"
         "$mainMod, B, exec, firefox --new-window"
         "$mainMod, D, exec, fuzzel"
-        
-        ", Print, exec, grim -g \"$(slurp)\" - | wl-copy"
-        
+
+        '', Print, exec, grim -g "$(slurp)" - | wl-copy''
+
         "$mainMod, V, togglefloating,"
-        
+
         "$mainMod, F, fullscreen,"
-        
+
         "$mainMod SHIFT, L, exec, swaylock -f"
 
-	"ALT, Tab, workspace, previous"
+        "ALT, Tab, workspace, previous"
       ];
-      
+
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
       ];
-      
-      exec-once = [
-        "waybar"
-        "mako"
-      ];
+
+      exec-once = [ "waybar" "mako" ];
     };
   };
 
@@ -111,21 +103,19 @@
     enable = true;
     timeouts = [
       {
-        timeout = 600; 
+        timeout = 600;
         command = "${pkgs.swaylock}/bin/swaylock -f";
       }
       {
-        timeout = 580; 
+        timeout = 580;
         command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
         resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
       }
     ];
-    events = [
-      {
-        event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock -f";
-      }
-    ];
+    events = [{
+      event = "before-sleep";
+      command = "${pkgs.swaylock}/bin/swaylock -f";
+    }];
   };
 
   home.packages = with pkgs; [
@@ -135,23 +125,23 @@
 
     # Terminal
     kitty
-    
+
     # Editors
     neovim
     vim
-    
+
     # Terminal utilities
     yazi
-    
+
     # Screenshots and clipboard
     grim
     slurp
     wl-clipboard
-    
+
     # Screen locking and idle
     swayidle
     swaylock
-    
+
     # System utilities
     htop
     p7zip
@@ -159,25 +149,26 @@
     wget
     unzip
     firefox
-    
+    fzf
+
     # Gaming platforms
     bottles
     lutris
     steam
-    
+
     # Gaming communication
     discord
-    
+
     # Wine and compatibility layers
-    dxvk                     # DirectX to Vulkan translation
+    dxvk # DirectX to Vulkan translation
     protontricks
     wineWowPackages.staging
     winetricks
-    
+
     # Gaming performance tools
     gamemode
     mangohud
-    
+
     # Gaming libraries
     glib
     glibc
@@ -186,7 +177,7 @@
     vulkan-loader
     vulkan-tools
     protonplus
-    
+
     # Development tools
     appimage-run
     claude-code
@@ -206,21 +197,19 @@
     protonvpn-gui
     qbittorrent
     mpv
+    nerd-fonts.bigblue-terminal
+    proggyfonts
+    # gohufont
 
     # Development runtimes
-    (with pkgs.dotnetCorePackages; combinePackages [
-      sdk_8_0
-      sdk_9_0
-    ])
+    (with pkgs.dotnetCorePackages; combinePackages [ sdk_8_0 sdk_9_0 ])
 
     nodejs_22
 
-    (python3.withPackages (ps: with ps; [
-      requests
-    ]))
+    (python3.withPackages (ps: with ps; [ requests ]))
   ];
 
- programs.waybar = {
+  programs.waybar = {
     enable = true;
     settings = {
       mainBar = builtins.fromJSON (builtins.readFile ./waybar/config.json);
@@ -228,11 +217,11 @@
     style = builtins.readFile ./waybar/style.css;
   };
 
-  services.mako = { 
+  services.mako = {
     enable = true;
     settings = {
-        default-timeout = 5000;
-        ignore-timeout = true;
+      default-timeout = 5000;
+      ignore-timeout = true;
     };
   };
 
@@ -292,7 +281,7 @@
   programs.git = {
     enable = true;
     settings.user = {
-      name  = "Albin Gudmundsson";
+      name = "Albin Gudmundsson";
       email = "albin.gudmundsson@gmail.com";
     };
   };

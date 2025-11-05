@@ -242,6 +242,8 @@ return {
         'typescript-language-server',
         'angular-language-server',
         'roslyn',
+        'yamlfix',
+        'nixfmt',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -310,6 +312,8 @@ return {
         css = { 'prettierd' },
         scss = { 'prettierd' },
         json = { 'prettierd' },
+        yaml = { 'yamlfix' },
+        nix = { 'nixfmt' },
       },
       formatters = {
         prettierd = {

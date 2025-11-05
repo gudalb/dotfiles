@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { nixpkgs, hyprland, home-manager, ... } @ inputs: {
+  outputs = { nixpkgs, hyprland, home-manager, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
@@ -20,7 +20,7 @@
           home-manager.useUserPackages = true;
           home-manager.users.abe = import ./home.nix;
           home-manager.extraSpecialArgs = { inherit inputs; };
-	  home-manager.backupFileExtension = "backup";
+          home-manager.backupFileExtension = "backup";
         }
       ];
     };
