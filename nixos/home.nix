@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   home.username = "abe";
@@ -208,6 +208,19 @@
 
     (python3.withPackages (ps: with ps; [ requests ]))
   ];
+
+  home.sessionVariables = { DOTNET_CLI_TELEMETRY_OPTOUT = "1"; };
+
+  home.file = {
+    ".dotnet/.keep".text = "";
+    ".nuget/.keep".text = "";
+  };
+
+  home.activation = {
+    fixDotnetPermissions = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      $DRY_RUN_CMD chmod -R u+w $HOME/.dotnet $HOME/.nuget 2>/dev/null || true
+    '';
+  };
 
   programs.waybar = {
     enable = true;
