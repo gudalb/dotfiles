@@ -314,6 +314,7 @@ return {
         json = { 'prettierd' },
         yaml = { 'yamlfix' },
         nix = { 'nixfmt' },
+        go = { 'gofumpt' },
       },
       formatters = {
         prettierd = {
