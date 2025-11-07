@@ -28,6 +28,7 @@ vim.o.confirm = true
 vim.go.background = 'dark'
 vim.g.snacks_animate = false
 vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
 vim.g.dotnet_errors_only = true
 vim.g.dotnet_show_project_file = false
 
