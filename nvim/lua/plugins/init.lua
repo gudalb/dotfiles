@@ -244,6 +244,7 @@ return {
         'roslyn',
         'yamlfix',
         'nixfmt',
+        'gopls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -314,7 +315,6 @@ return {
         json = { 'prettierd' },
         yaml = { 'yamlfix' },
         nix = { 'nixfmt' },
-        go = { 'gofumpt' },
       },
       formatters = {
         prettierd = {
