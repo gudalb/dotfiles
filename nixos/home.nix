@@ -118,6 +118,18 @@
     }];
   };
 
+  services.gammastep = {
+    enable = true;
+    latitude = 59.3; # Stockholm coordinates
+    longitude = 18.1;
+    temperature = {
+      day = 6500;
+      night = 3500;
+    };
+    settings = { general = { adjustment-method = "wayland"; }; };
+    tray = true;
+  };
+
   home.packages = with pkgs; [
     # UI and system
     fuzzel
@@ -192,6 +204,7 @@
     azure-cli
     kubelogin
     kubectl
+    go
 
     # misc
     protonvpn-gui
