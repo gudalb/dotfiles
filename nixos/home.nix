@@ -197,9 +197,9 @@
     protonvpn-gui
     qbittorrent
     mpv
-    nerd-fonts.bigblue-terminal
     proggyfonts
-    # gohufont
+    kdePackages.kcalc
+    spotify
 
     # Development runtimes
     (with pkgs.dotnetCorePackages; combinePackages [ sdk_8_0 sdk_9_0 ])

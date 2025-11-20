@@ -56,6 +56,7 @@ button:hover {
 #backlight,
 #network,
 #pulseaudio,
+#custom-background-apps,
 #tray,
 #window {
     padding: 0 10px;
@@ -175,4 +176,14 @@ button:hover {
 #window {
     background-color: transparent;
     color: #ffffff;
+}
+
+#custom-background-apps {
+    background-color: #64727D;
+    color: #ffffff;
+    min-width: 50px;
+}
+
+#custom-background-apps.background-apps-empty {
+    color: #888888;
 }
