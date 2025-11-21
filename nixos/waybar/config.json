@@ -10,6 +10,7 @@
     "hyprland/window"
   ],
   "modules-right": [
+    "custom/background-apps",
     "pulseaudio",
     "battery",
     "clock"
@@ -82,5 +83,12 @@
       "default": ["", "", ""]
     },
     "on-click": "pavucontrol"
+  },
+  "custom/background-apps": {
+    "exec": "/etc/nixos/waybar/scripts/background-apps.sh",
+    "return-type": "json",
+    "interval": 2,
+    "tooltip": true,
+    "format": "{}"
   }
 }
