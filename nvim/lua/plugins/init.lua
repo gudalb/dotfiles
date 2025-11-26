@@ -93,7 +93,11 @@ return {
             end
           end
         end
-        fzf.buffers()
+        fzf.buffers({
+          filter = function(bufnr)
+            return vim.bo[bufnr].buftype ~= 'terminal'
+          end
+        })
       end, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>/', fzf.blines, { desc = '[/] Fuzzily search in current buffer' })
       vim.keymap.set('n', '<leader>s/', function()
@@ -244,6 +248,7 @@ return {
         'roslyn',
         'yamlfix',
         'nixfmt',
+        'gopls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -315,15 +320,7 @@ return {
         yaml = { 'yamlfix' },
         nix = { 'nixfmt' },
       },
-      formatters = {
-        prettierd = {
-          args = { '--print-width', '100' },
-        },
-        prettierd_json = {
-          inherit = 'prettierd',
-          args = { '--tab-width', '2' },
-        },
-      },
+      formatters = {},
     },
   },
 
