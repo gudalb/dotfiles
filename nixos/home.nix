@@ -210,9 +210,25 @@
     protonvpn-gui
     qbittorrent
     mpv
+    ffmpeg-full
     proggyfonts
     kdePackages.kcalc
     spotify
+    (pkgs.writeShellScriptBin "calibre-appimage" ''
+      export LD_LIBRARY_PATH="${
+        pkgs.lib.makeLibraryPath [
+          pkgs.pcre2
+          pkgs.qt6.qtbase
+          pkgs.qt6.qtwayland
+          pkgs.libGL
+          pkgs.stdenv.cc.cc.lib
+          pkgs.zlib
+        ]
+      }:$LD_LIBRARY_PATH"
+
+      exec ${pkgs.appimage-run}/bin/appimage-run "$HOME/Downloads/Calibre-8.13.0-x86_64.AppImage" "$@"
+    '')
+    appimage-run
 
     # Development runtimes
     (with pkgs.dotnetCorePackages; combinePackages [ sdk_8_0 sdk_9_0 ])
