@@ -320,15 +320,7 @@ return {
         yaml = { 'yamlfix' },
         nix = { 'nixfmt' },
       },
-      formatters = {
-        prettierd = {
-          args = { '--print-width', '100' },
-        },
-        prettierd_json = {
-          inherit = 'prettierd',
-          args = { '--tab-width', '2' },
-        },
-      },
+      formatters = {},
     },
   },
 
