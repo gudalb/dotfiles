@@ -232,6 +232,19 @@ return {
             },
           },
         },
+        eslint = {
+          filetypes = {
+            'javascript',
+            'javascriptreact',
+            'typescript',
+            'typescriptreact',
+            'vue',
+            'html',
+            'css',
+            'scss',
+            'json',
+          },
+        },
       }
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
@@ -240,7 +253,6 @@ return {
         'csharpier',
         'html-lsp',
         'css-lsp',
-        'prettierd',
         'json-lsp',
         'netcoredbg',
         'typescript-language-server',
@@ -308,15 +320,6 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         python = { 'ruff_format', 'ruff_organize_imports' },
-        javascript = { 'prettierd' },
-        javascriptreact = { 'prettierd' },
-        typescript = { 'prettierd' },
-        typescriptreact = { 'prettierd' },
-        html = { 'prettierd' },
-        htmlangular = { 'prettierd' },
-        css = { 'prettierd' },
-        scss = { 'prettierd' },
-        json = { 'prettierd' },
         yaml = { 'yamlfix' },
         nix = { 'nixfmt' },
       },
