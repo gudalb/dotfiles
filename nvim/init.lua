@@ -32,6 +32,12 @@ vim.opt.tabstop = 4
 vim.g.dotnet_errors_only = true
 vim.g.dotnet_show_project_file = false
 
+-- UFO folding settings
+vim.o.foldcolumn = '1'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
 -- JSON-specific indentation settings
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'json',
