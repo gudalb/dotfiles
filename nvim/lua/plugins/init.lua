@@ -93,11 +93,11 @@ return {
             end
           end
         end
-        fzf.buffers({
+        fzf.buffers {
           filter = function(bufnr)
             return vim.bo[bufnr].buftype ~= 'terminal'
-          end
-        })
+          end,
+        }
       end, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>/', fzf.blines, { desc = '[/] Fuzzily search in current buffer' })
       vim.keymap.set('n', '<leader>s/', function()
