@@ -19,7 +19,25 @@ dap.configurations.cs = {
     name = 'launch - netcoredbg',
     request = 'launch',
     program = function()
-      return dotnet.build_dll_path()
+      local dll_path = dotnet.build_dll_path()
+      if not dll_path then
+        error("Failed to find DLL path")
+      end
+      if vim.fn.filereadable(dll_path) ~= 1 then
+        error("DLL not found: " .. dll_path)
+      end
+      return dll_path
     end,
+    cwd = function()
+      local dotnet = require 'config.nvim-dap-dotnet'
+      local current_file = vim.api.nvim_buf_get_name(0)
+      local current_dir = vim.fn.fnamemodify(current_file, ":p:h")
+      return dotnet.find_project_root_by_csproj(current_dir)
+    end,
+    stopAtEntry = false,
+    console = 'integratedTerminal',
+    justMyCode = false,
+    requireExactSource = false,
+    enableStepFiltering = false,
   },
 }
