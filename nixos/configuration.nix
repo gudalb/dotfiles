@@ -12,6 +12,8 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "joydev" ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -39,6 +41,9 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+  hardware.xone.enable = true;
+  hardware.xpadneo.enable = true;
+
   services.blueman.enable = true;
 
   services.xserver.xkb = {
@@ -51,7 +56,7 @@
   users.users.abe = {
     isNormalUser = true;
     description = "abe";
-    extraGroups = [ "networkmanager" "wheel" "storage" ];
+    extraGroups = [ "networkmanager" "wheel" "storage" "input" ];
     packages = with pkgs; [ ];
   };
 

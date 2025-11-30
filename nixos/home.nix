@@ -207,6 +207,7 @@
     go
 
     # misc
+    usbutils
     protonvpn-gui
     qbittorrent
     mpv
@@ -214,6 +215,7 @@
     proggyfonts
     kdePackages.kcalc
     spotify
+    parted
     (pkgs.writeShellScriptBin "calibre-appimage" ''
       export LD_LIBRARY_PATH="${
         pkgs.lib.makeLibraryPath [
