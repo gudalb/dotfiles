@@ -78,9 +78,10 @@ end, { desc = 'Toggle terminal' })
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
+map('n', '<F5>', "<Cmd>lua require'dap'.continue()<CR>", opts)
 map('n', '<F6>', "<Cmd>lua require('neotest').run.run({strategy = 'dap'})<CR>", opts)
 map('n', '<F9>', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
-map('n', '<leader>b', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", { noremap = true, silent = true, desc = '[D]ebug [D]oggle breakpoint' })
+map('n', '<leader>b', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", { noremap = true, silent = true, desc = '[D]ebug [T]oggle breakpoint' })
 map('n', '<F10>', "<Cmd>lua require'dap'.step_over()<CR>", opts)
 map('n', '<F11>', "<Cmd>lua require'dap'.step_into()<CR>", opts)
 map('n', '<F8>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
@@ -93,7 +94,7 @@ map('n', '<leader>dt', "<Cmd>lua require('neotest').run.run({strategy = 'dap'})<
 map('n', '<leader>da', "<Cmd>lua require('neotest').run.run(vim.fn.getcwd())<CR>", { noremap = true, silent = true, desc = 'run [A]ll tests' })
 map('n', '<leader>do', "<Cmd>lua require('neotest').output.open({ enter = true })<CR>", { noremap = true, silent = true, desc = 'show test [O]utput' })
 map('n', '<leader>dp', "<Cmd>lua require('neotest').output_panel.toggle()<CR>", { noremap = true, silent = true, desc = 'toggle output [P]anel' })
-map('n', '<leader>d', vim.diagnostic.open_float, { noremap = true, silent = true, desc = '[D]iagnostic [T]ext' })
+map('n', '<leader>dd', vim.diagnostic.open_float, { noremap = true, silent = true, desc = '[D]iagnostic [T]ext' })
 vim.keymap.set('n', '<leader>dq', function()
   local dap = require 'dap'
 

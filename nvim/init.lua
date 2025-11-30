@@ -26,19 +26,42 @@ vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
 vim.go.background = 'dark'
+
+-- Auto-reload files when changed externally
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  pattern = '*',
+  callback = function()
+    if vim.fn.mode() ~= 'c' then
+      vim.cmd 'checktime'
+    end
+  end,
+})
+vim.api.nvim_create_autocmd('FileChangedShellPost', {
+  pattern = '*',
+  callback = function()
+    vim.notify('File changed on disk. Buffer reloaded.', vim.log.levels.WARN)
+  end,
+})
 vim.g.snacks_animate = false
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.g.dotnet_errors_only = true
 vim.g.dotnet_show_project_file = false
 
+-- UFO folding settings
+vim.o.foldcolumn = '1'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
 -- JSON-specific indentation settings
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'json',
   callback = function()
-    vim.bo.shiftwidth = 2
-    vim.bo.tabstop = 2
-    vim.bo.softtabstop = 2
+    vim.bo.shiftwidth = 8
+    vim.bo.tabstop = 8
+    vim.bo.softtabstop = 8
     vim.bo.expandtab = true
   end,
 })

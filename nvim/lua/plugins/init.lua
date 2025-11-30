@@ -93,11 +93,11 @@ return {
             end
           end
         end
-        fzf.buffers({
+        fzf.buffers {
           filter = function(bufnr)
             return vim.bo[bufnr].buftype ~= 'terminal'
-          end
-        })
+          end,
+        }
       end, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>/', fzf.blines, { desc = '[/] Fuzzily search in current buffer' })
       vim.keymap.set('n', '<leader>s/', function()
@@ -232,6 +232,26 @@ return {
             },
           },
         },
+        eslint = {
+          filetypes = {
+            'javascript',
+            'javascriptreact',
+            'typescript',
+            'typescriptreact',
+            'vue',
+            'html',
+            'css',
+            'scss',
+            'json',
+          },
+          settings = {
+            format = true,
+          },
+          on_attach = function(client, bufnr)
+            client.server_capabilities.documentFormattingProvider = true
+            client.server_capabilities.documentRangeFormattingProvider = true
+          end,
+        },
       }
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
@@ -240,7 +260,6 @@ return {
         'csharpier',
         'html-lsp',
         'css-lsp',
-        'prettierd',
         'json-lsp',
         'netcoredbg',
         'typescript-language-server',
@@ -308,15 +327,6 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         python = { 'ruff_format', 'ruff_organize_imports' },
-        javascript = { 'prettierd' },
-        javascriptreact = { 'prettierd' },
-        typescript = { 'prettierd' },
-        typescriptreact = { 'prettierd' },
-        html = { 'prettierd' },
-        htmlangular = { 'prettierd' },
-        css = { 'prettierd' },
-        scss = { 'prettierd' },
-        json = { 'prettierd' },
         yaml = { 'yamlfix' },
         nix = { 'nixfmt' },
       },
@@ -532,5 +542,32 @@ return {
     dependencies = {
       'nvim-neotest/neotest',
     },
+  },
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = {
+      'kevinhwang91/promise-async',
+    },
+    event = 'BufReadPost',
+    opts = {
+      provider_selector = function(bufnr, filetype, buftype)
+        return { 'treesitter', 'indent' }
+      end,
+    },
+    config = function(_, opts)
+      require('ufo').setup(opts)
+
+      -- Keymaps for folding
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds, { desc = 'Open all folds' })
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, { desc = 'Close all folds' })
+      vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds, { desc = 'Open folds except kinds' })
+      vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith, { desc = 'Close folds with' })
+      vim.keymap.set('n', 'zp', function()
+        local winid = require('ufo').peekFoldedLinesUnderCursor()
+        if not winid then
+          vim.lsp.buf.hover()
+        end
+      end, { desc = 'Peek fold or show hover' })
+    end,
   },
 }
