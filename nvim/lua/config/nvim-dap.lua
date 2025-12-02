@@ -34,7 +34,7 @@ dap.configurations.cs = {
       local current_dir = vim.fn.fnamemodify(current_file, ":p:h")
       return dotnet.find_project_root_by_csproj(current_dir)
     end,
-    stopAtEntry = false,
+    stopAtEntry = true,
     console = 'integratedTerminal',
     justMyCode = false,
     requireExactSource = false,

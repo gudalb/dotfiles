@@ -4,6 +4,27 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save file' })
 vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a', { desc = 'Save file' })
 
+-- Quickfix toggle and navigation
+local function toggle_quickfix()
+  local qf_exists = false
+  for _, win in pairs(vim.fn.getwininfo()) do
+    if win.quickfix == 1 then
+      qf_exists = true
+      break
+    end
+  end
+  if qf_exists then
+    vim.cmd 'cclose'
+  else
+    vim.cmd 'copen'
+  end
+end
+
+vim.keymap.set('n', '<leader>cc', toggle_quickfix, { desc = '[C]quickfix toggle' })
+vim.keymap.set('n', '<leader>cn', ':cnext<CR>', { desc = '[C]quickfix [N]ext' })
+vim.keymap.set('n', '<leader>cp', ':cprev<CR>', { desc = '[C]quickfix [P]revious' })
+vim.keymap.set('n', '<leader>cx', ':cexpr []<CR>', { desc = '[C]quickfix clear' })
+
 vim.api.nvim_create_autocmd('TermOpen', {
   pattern = '*',
   callback = function()
