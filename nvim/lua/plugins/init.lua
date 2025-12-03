@@ -71,11 +71,9 @@ return {
     config = function(_, opts)
       -- Add ctrl-q action to send results to quickfix
       local actions = require('fzf-lua.actions')
-      opts.actions = {
-        files = {
-          ['ctrl-q'] = actions.file_sel_to_qf,
-        },
-      }
+      opts.actions = opts.actions or {}
+      opts.actions.files = opts.actions.files or {}
+      opts.actions.files['ctrl-q'] = actions.file_sel_to_qf
       require('fzf-lua').setup(opts)
 
       local fzf = require 'fzf-lua'
