@@ -207,6 +207,7 @@
     go
 
     # misc
+    foot
     usbutils
     protonvpn-gui
     qbittorrent
@@ -234,13 +235,17 @@
 
     # Development runtimes
     (with pkgs.dotnetCorePackages; combinePackages [ sdk_8_0 sdk_9_0 sdk_10_0 ])
+    dotnet-ef
 
     nodejs_22
 
     (python3.withPackages (ps: with ps; [ requests ]))
   ];
 
-  home.sessionVariables = { DOTNET_CLI_TELEMETRY_OPTOUT = "1"; };
+  home.sessionVariables = {
+    DOTNET_CLI_TELEMETRY_OPTOUT = "1";
+    LD_LIBRARY_PATH = "${pkgs.opencv4}/lib:${pkgs.stdenv.cc.cc.lib}/lib";
+  };
 
   home.file = {
     ".dotnet/.keep".text = "";
