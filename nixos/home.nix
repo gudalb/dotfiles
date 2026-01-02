@@ -207,7 +207,9 @@
     go
 
     # misc
+    wezterm
     foot
+    ghostty
     usbutils
     protonvpn-gui
     qbittorrent
