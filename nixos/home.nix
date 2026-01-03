@@ -21,6 +21,11 @@
         sensitivity = 0;
       };
 
+      cursor = {
+        no_hardware_cursors = true;
+        enable_hyprcursor = false;
+      };
+
       general = {
         gaps_in = 0;
         gaps_out = 0;
@@ -73,7 +78,7 @@
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-        "$mainMod, Return, exec, kitty"
+        "$mainMod, Return, exec, wezterm"
         "$mainMod, E, exec, kitty -e yazi"
         "$mainMod, T, exec, kitty -e nvim"
         "$mainMod, B, exec, firefox --new-window"
@@ -112,10 +117,7 @@
         resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
       }
     ];
-    events = [{
-      event = "before-sleep";
-      command = "${pkgs.swaylock}/bin/swaylock -f";
-    }];
+    events = { before-sleep = "${pkgs.swaylock}/bin/swaylock -f"; };
   };
 
   services.gammastep = {

@@ -10,7 +10,10 @@
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.efiSupport = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "joydev" ];
@@ -90,7 +93,7 @@
       nerd-fonts.symbols-only
       maple-mono.NF
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       liberation_ttf
       dejavu_fonts
     ];
