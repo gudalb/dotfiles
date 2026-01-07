@@ -70,7 +70,7 @@ return {
     },
     config = function(_, opts)
       -- Add ctrl-q action to send results to quickfix
-      local actions = require('fzf-lua.actions')
+      local actions = require 'fzf-lua.actions'
       opts.actions = opts.actions or {}
       opts.actions.files = opts.actions.files or {}
       opts.actions.files['enter'] = actions.file_edit_or_qf
@@ -441,7 +441,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs',
+    main = 'nvim-treesitter',
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'c_sharp' },
       auto_install = true,

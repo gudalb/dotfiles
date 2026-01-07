@@ -17,6 +17,7 @@ mkdir -p "$CONFIG_DIR"
 # List of config directories to symlink
 declare -A CONFIGS=(
     ["nvim"]="nvim"
+    ["hyprland"]="hypr"
     ["mpv"]="mpv"
     ["kitty"]="kitty"
     ["swaylock"]="swaylock"

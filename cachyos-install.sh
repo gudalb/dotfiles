@@ -31,6 +31,7 @@ PACKAGES=(
     # UI and system
     fuzzel
     mako
+    waybar
 
     # Terminals
     wezterm
@@ -92,7 +93,6 @@ PACKAGES=(
     k9s
     jq
     go
-    appimage-run
 
     # Kubernetes tools
     kubectl
@@ -114,11 +114,9 @@ PACKAGES=(
 # AUR packages
 AUR_PACKAGES=(
     protonplus
-    protonvpn-gui
     claude-code
     dbeaver
     azure-cli
-    kubelogin-bin
     protontricks
 )
 
@@ -136,7 +134,6 @@ $AUR_HELPER -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 # Install .NET SDK
 echo "Installing .NET SDK..."
 $AUR_HELPER -S --needed --noconfirm dotnet-sdk-8.0 dotnet-sdk-9.0 dotnet-sdk
-$AUR_HELPER -S --needed --noconfirm dotnet-ef
 
 # Install Node.js
 echo "Installing Node.js..."
