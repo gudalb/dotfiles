@@ -84,6 +84,26 @@ PACKAGES=(
     vulkan-icd-loader
     lib32-vulkan-icd-loader
     vulkan-tools
+	lutris
+    lib32-vulkan-mesa-layers
+    lib32-vkd3d
+    vkd3d
+    lib32-gnutls
+    lib32-alsa-lib
+    lib32-alsa-plugins
+    lib32-libpulse
+    lib32-openal
+    lib32-mpg123
+    giflib
+    lib32-giflib
+    libpng
+    lib32-libpng
+    gst-plugins-base-libs
+    lib32-gst-plugins-base-libs
+	lib32-gcc-libs
+    lib32-libxcb
+    lib32-libx11
+	cachyos-gaming-meta
 
     # Development tools
     gcc
