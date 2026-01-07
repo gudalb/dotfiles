@@ -129,6 +129,7 @@ PACKAGES=(
     blueman
     networkmanager
     openssh
+	udiskie
 )
 
 # AUR packages

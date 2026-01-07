@@ -20,6 +20,7 @@ declare -A CONFIGS=(
     ["hyprland"]="hypr"
     ["mpv"]="mpv"
     ["kitty"]="kitty"
+    ["mako"]="mako"
     ["swaylock"]="swaylock"
     ["waybar"]="waybar"
     ["wofi"]="wofi"

@@ -1,0 +1,24 @@
+# Default timeout (milliseconds) - 5 seconds
+default-timeout=5000
+
+# Maximum visible notifications
+max-visible=5
+
+# Sort by time (newest first)
+sort=-time
+
+# Notification appearance
+width=300
+height=100
+margin=10
+padding=10
+border-size=2
+border-radius=5
+
+# Colors (customize as you like)
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#89b4fa
+
+# Position
+anchor=top-right
