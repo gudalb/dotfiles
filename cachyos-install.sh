@@ -62,11 +62,6 @@ PACKAGES=(
     # Browser
     firefox
 
-    # Gaming platforms
-    bottles
-    lutris
-    steam
-
     # Gaming communication
     discord
 
