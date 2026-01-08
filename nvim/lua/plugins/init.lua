@@ -273,7 +273,6 @@ return {
         'angular-language-server',
         'roslyn',
         'yamlfix',
-        'nixfmt',
         'gopls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -335,9 +334,7 @@ return {
         lua = { 'stylua' },
         python = { 'ruff_format', 'ruff_organize_imports' },
         yaml = { 'yamlfix' },
-        nix = { 'nixfmt' },
       },
-      formatters = {},
     },
   },
 
