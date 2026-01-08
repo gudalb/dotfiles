@@ -199,6 +199,7 @@ return {
       })
 
       vim.diagnostic.config {
+        update_in_insert = true, -- Update diagnostics while typing
         severity_sort = true,
         float = { border = 'rounded', source = 'if_many' },
         underline = { severity = vim.diagnostic.severity.ERROR },
@@ -272,7 +273,6 @@ return {
         'angular-language-server',
         'roslyn',
         'yamlfix',
-        'nixfmt',
         'gopls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -334,9 +334,7 @@ return {
         lua = { 'stylua' },
         python = { 'ruff_format', 'ruff_organize_imports' },
         yaml = { 'yamlfix' },
-        nix = { 'nixfmt' },
       },
-      formatters = {},
     },
   },
 
