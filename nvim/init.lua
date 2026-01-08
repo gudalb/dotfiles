@@ -15,7 +15,7 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.signcolumn = 'yes'
-vim.o.updatetime = 250
+vim.o.updatetime = 100
 vim.o.timeoutlen = 300
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -39,8 +39,18 @@ vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHo
 })
 vim.api.nvim_create_autocmd('FileChangedShellPost', {
   pattern = '*',
-  callback = function()
+  callback = function(args)
     vim.notify('File changed on disk. Buffer reloaded.', vim.log.levels.WARN)
+    -- Trigger LSP to re-analyze the buffer
+    vim.schedule(function()
+      local bufnr = args.buf
+      local clients = vim.lsp.get_clients({ bufnr = bufnr })
+      for _, client in ipairs(clients) do
+        -- Detach and reattach to force LSP to re-read
+        vim.lsp.buf_detach_client(bufnr, client.id)
+        vim.lsp.buf_attach_client(bufnr, client.id)
+      end
+    end)
   end,
 })
 vim.g.snacks_animate = false
