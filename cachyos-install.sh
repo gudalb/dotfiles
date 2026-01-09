@@ -123,6 +123,9 @@ PACKAGES=(
     qbittorrent
     spotify-launcher
 
+ 	proton-vpn-gtk-app
+	fuse2
+
     # System utilities (likely already installed)
     bluez
     bluez-utils
