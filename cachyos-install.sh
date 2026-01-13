@@ -134,6 +134,8 @@ PACKAGES=(
     networkmanager
     openssh
 	udiskie
+
+	xwayland-satellite
 )
 
 # AUR packages
@@ -143,6 +145,9 @@ AUR_PACKAGES=(
     dbeaver
     azure-cli
     protontricks
+	niri
+	wlsunset
+	noctalia-shell
 )
 
 # Install official repository packages
