@@ -104,6 +104,7 @@ PACKAGES=(
     lib32-libxcb
     lib32-libx11
 	cachyos-gaming-meta
+	xdg-desktop-portal-hyprland
 
     # Development tools
     gcc
