@@ -47,22 +47,15 @@ input {
 
 // Output configuration
 // Find your output names with: niri msg outputs
-// Uncomment and customize for your monitors
-/-output "eDP-1" {
-    // Set resolution and refresh rate
-    mode "1920x1080@60"
-    
+output "DP-2" {
+    // Set resolution and refresh rate to 144Hz
+    mode "2560x1440@143.972"
+
     // Set display scaling (1.0 = 100%, 1.5 = 150%, 2.0 = 200%)
     scale 1.0
-    
+
     // Position for multi-monitor setup
     position x=0 y=0
-}
-
-/-output "HDMI-A-1" {
-    mode "2560x1440@144"
-    scale 1.0
-    position x=1920 y=0
 }
 
 // Layout settings
