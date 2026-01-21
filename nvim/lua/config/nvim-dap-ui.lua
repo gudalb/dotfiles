@@ -13,9 +13,10 @@ dapui.setup {
   layouts = {
     {
       elements = {
-        { id = 'scopes', size = 1.0 }, -- 100% of this panel is scopes
+        { id = 'scopes', size = 0.6 },
+        { id = 'repl', size = 0.4 },
       },
-      size = 15, -- height in lines (adjust to taste)
+      size = 20, -- height in lines (adjust to taste)
       position = 'bottom', -- "left", "right", "top", "bottom"
     },
   },
