@@ -116,12 +116,6 @@ require('lazy').setup('plugins', {
   },
 })
 
-require('neotest').setup {
-  adapters = {
-    require 'neotest-dotnet',
-  },
-}
-
 -- Load all config files after plugins are loaded
 local config_path = vim.fn.stdpath 'config' .. '/lua/config'
 for _, file in ipairs(vim.fn.readdir(config_path)) do

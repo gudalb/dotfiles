@@ -29,7 +29,6 @@ dap.configurations.cs = {
       return dll_path
     end,
     cwd = function()
-      local dotnet = require 'config.nvim-dap-dotnet'
       local current_file = vim.api.nvim_buf_get_name(0)
       local current_dir = vim.fn.fnamemodify(current_file, ":p:h")
       return dotnet.find_project_root_by_csproj(current_dir)
