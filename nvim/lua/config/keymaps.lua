@@ -75,6 +75,7 @@ local function toggle_terminal(term_id)
     vim.cmd 'botright split'
     local win_height = math.floor(vim.o.lines * 0.2)
     vim.api.nvim_win_set_height(0, win_height)
+    vim.wo.winfixheight = true
   end
 
   if term_buf and vim.api.nvim_buf_is_valid(term_buf) then
@@ -84,6 +85,7 @@ local function toggle_terminal(term_id)
     terminal_buffers[term_id] = vim.api.nvim_get_current_buf()
   end
 
+  vim.wo.winfixheight = true
   vim.cmd 'startinsert'
 end
 
@@ -94,8 +96,17 @@ vim.keymap.set('n', '<C-,>', function()
   toggle_terminal(vim.v.count > 0 and vim.v.count or 1)
 end, { desc = 'Toggle terminal' })
 vim.keymap.set('t', '<C-,>', function()
-  toggle_terminal(vim.v.count > 0 and vim.v.count or 1)
-end, { desc = 'Toggle terminal' })
+  -- Find which terminal we're in and toggle it properly
+  local current_buf = vim.api.nvim_get_current_buf()
+  for id, buf in pairs(terminal_buffers) do
+    if buf == current_buf then
+      toggle_terminal(id)
+      return
+    end
+  end
+  -- Fallback: close current window
+  vim.cmd 'close'
+end, { desc = 'Toggle current terminal' })
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
