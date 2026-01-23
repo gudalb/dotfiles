@@ -89,24 +89,9 @@ local function toggle_terminal(term_id)
   vim.cmd 'startinsert'
 end
 
-vim.keymap.set('n', '<leader>ft', function()
-  toggle_terminal(vim.v.count > 0 and vim.v.count or 1)
-end, { desc = 'Toggle terminal' })
-vim.keymap.set('n', '<C-,>', function()
-  toggle_terminal(vim.v.count > 0 and vim.v.count or 1)
-end, { desc = 'Toggle terminal' })
-vim.keymap.set('t', '<C-,>', function()
-  -- Find which terminal we're in and toggle it properly
-  local current_buf = vim.api.nvim_get_current_buf()
-  for id, buf in pairs(terminal_buffers) do
-    if buf == current_buf then
-      toggle_terminal(id)
-      return
-    end
-  end
-  -- Fallback: close current window
-  vim.cmd 'close'
-end, { desc = 'Toggle current terminal' })
+vim.keymap.set({ 'n', 't' }, '<C-1>', function() toggle_terminal(1) end, { desc = 'Toggle terminal 1' })
+vim.keymap.set({ 'n', 't' }, '<C-2>', function() toggle_terminal(2) end, { desc = 'Toggle terminal 2' })
+vim.keymap.set({ 'n', 't' }, '<C-3>', function() toggle_terminal(3) end, { desc = 'Toggle terminal 3' })
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
