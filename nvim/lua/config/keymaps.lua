@@ -4,6 +4,9 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save file' })
 vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a', { desc = 'Save file' })
 
+-- Write without formatting (skips BufWritePre autocommands)
+vim.cmd 'cnoreabbrev ww noautocmd w'
+
 -- Quickfix toggle and navigation
 local function toggle_quickfix()
   local qf_exists = false
