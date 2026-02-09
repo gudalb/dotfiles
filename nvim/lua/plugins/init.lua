@@ -75,6 +75,11 @@ return {
       opts.actions.files = opts.actions.files or {}
       opts.actions.files['enter'] = actions.file_edit_or_qf
       opts.actions.files['ctrl-q'] = actions.file_sel_to_qf
+      opts.grep = opts.grep or {}
+      opts.grep.toggle_flag = '--fixed-strings'
+      opts.grep.header_separator = '\n:: '
+      opts.grep.actions = opts.grep.actions or {}
+      opts.grep.actions['ctrl-r'] = { fn = actions.toggle_flag, header = 'Disable regex' }
       require('fzf-lua').setup(opts)
 
       local fzf = require 'fzf-lua'
