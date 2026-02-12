@@ -148,8 +148,6 @@ map('v', '>', '>gv', { desc = 'Indent selection' })
 -- LSP keybindings
 map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ctions' })
 map('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
-map('n', 'ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ctions' })
-map('n', 'cr', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
 map('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })
 map('n', 'gi', vim.lsp.buf.implementation, { desc = '[G]oto [I]mplementation' })
 map('n', 'grT', vim.lsp.buf.hover, { desc = '[G]et [T]ype info' })
