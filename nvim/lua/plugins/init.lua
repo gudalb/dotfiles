@@ -83,10 +83,12 @@ return {
       require('fzf-lua').setup(opts)
 
       local fzf = require 'fzf-lua'
+
       vim.keymap.set('n', '<leader>sh', fzf.helptags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', fzf.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', fzf.files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ff', fzf.files, { desc = '[F]ind [F]iles' })
+      vim.keymap.set('n', '<leader>gf', fzf.git_files, { desc = '[G]it [F]iles' })
       vim.keymap.set('n', '<leader>ss', fzf.builtin, { desc = '[S]earch [S]elect fzf-lua' })
       vim.keymap.set('n', '<leader>sw', fzf.grep_cword, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', fzf.live_grep, { desc = '[S]earch by [G]rep' })
@@ -479,6 +481,9 @@ return {
         filters = {
           dotfiles = true,
           git_ignored = true,
+        },
+        filesystem_watchers = {
+          ignore_dirs = { 'bin', 'obj', 'node_modules', '.git' },
         },
         actions = {
           open_file = {
