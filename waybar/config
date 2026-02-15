@@ -55,14 +55,36 @@
       "hyprland/workspaces"
     ],
     "modules-right": [
+      "custom/launcher",
+      "custom/close",
       "backlight",
       "pulseaudio",
       "battery",
       "clock"
     ],
+    "custom/launcher": {
+      "format": "",
+      "on-click": "fuzzel",
+      "tooltip": false
+    },
+    "custom/close": {
+      "format": "",
+      "on-click": "hyprctl dispatch killactive",
+      "tooltip": false
+    },
     "backlight": {
       "format": "{percent}% {icon}",
-      "format-icons": ["", "", "", "", "", "", "", "", ""],
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
       "on-scroll-up": "brightnessctl set +5%",
       "on-scroll-down": "brightnessctl set 5%-"
     },
