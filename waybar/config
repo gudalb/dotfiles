@@ -55,10 +55,17 @@
       "hyprland/workspaces"
     ],
     "modules-right": [
+      "backlight",
       "pulseaudio",
       "battery",
       "clock"
     ],
+    "backlight": {
+      "format": "{percent}% {icon}",
+      "format-icons": ["", "", "", "", "", "", "", "", ""],
+      "on-scroll-up": "brightnessctl set +5%",
+      "on-scroll-down": "brightnessctl set 5%-"
+    },
     "network": {
       "format-alt": "{ifname}: {ipaddr}/{cidr}",
       "format-disconnected": "Disconnected ⚠",
