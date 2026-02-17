@@ -75,7 +75,12 @@ return {
       opts.actions.files = opts.actions.files or {}
       opts.actions.files['enter'] = actions.file_edit_or_qf
       opts.actions.files['ctrl-q'] = actions.file_sel_to_qf
+
       opts.grep = opts.grep or {}
+
+      opts.grep.rg_opts =
+        '--column --line-number --smart-case --glob "!node_modules/**" --glob "!build/**" --glob "!dist/**" --glob "!bin/**" --glob "!obj/**" --glob "!.git/**"'
+
       opts.grep.toggle_flag = '--fixed-strings'
       opts.grep.header_separator = '\n:: '
       opts.grep.actions = opts.grep.actions or {}
