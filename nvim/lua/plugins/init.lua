@@ -1,5 +1,5 @@
 return {
-  'NMAC427/guess-indent.nvim',
+  -- 'NMAC427/guess-indent.nvim',
   {
     'folke/which-key.nvim',
     event = 'VimEnter',
