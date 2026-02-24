@@ -1,18 +1,6 @@
 return {
   'NMAC427/guess-indent.nvim',
   {
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-    },
-  },
-  {
     'folke/which-key.nvim',
     event = 'VimEnter',
     opts = {
@@ -431,14 +419,6 @@ return {
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    config = function()
-      require('nvim-autopairs').setup()
-    end,
-  },
-
-  {
     'windwp/nvim-ts-autotag',
     event = 'InsertEnter',
     opts = {},
@@ -448,6 +428,8 @@ return {
     'echasnovski/mini.nvim',
     config = function()
       require('mini.ai').setup { n_lines = 500 }
+
+      require('mini.pairs').setup()
 
       require('mini.surround').setup()
 
@@ -569,33 +551,6 @@ return {
           require 'neotest-dotnet',
         },
       }
-    end,
-  },
-  {
-    'kevinhwang91/nvim-ufo',
-    dependencies = {
-      'kevinhwang91/promise-async',
-    },
-    event = 'BufReadPost',
-    opts = {
-      provider_selector = function(bufnr, filetype, buftype)
-        return { 'treesitter', 'indent' }
-      end,
-    },
-    config = function(_, opts)
-      require('ufo').setup(opts)
-
-      -- Keymaps for folding
-      vim.keymap.set('n', 'zR', require('ufo').openAllFolds, { desc = 'Open all folds' })
-      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, { desc = 'Close all folds' })
-      vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds, { desc = 'Open folds except kinds' })
-      vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith, { desc = 'Close folds with' })
-      vim.keymap.set('n', 'zp', function()
-        local winid = require('ufo').peekFoldedLinesUnderCursor()
-        if not winid then
-          vim.lsp.buf.hover()
-        end
-      end, { desc = 'Peek fold or show hover' })
     end,
   },
 }
