@@ -5,8 +5,19 @@
 font_size 10.0
 
 # BEGIN_KITTY_FONTS
-font_family      family="ProggyClean Nerd Font"
+font_family      family="Maple Mono NF"
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
 # END_KITTY_FONTS
+map shift+enter send_text all \e\r
+
+# OS-specific configuration
+include ${KITTY_OS}.conf
+
+mouse_map left release grabbed,ungrabbed mouse_handle_click selection prompt
+
+map ctrl+h neighboring_window left
+map ctrl+l neighboring_window right
+map ctrl+k neighboring_window up
+map ctrl+j neighboring_window down
