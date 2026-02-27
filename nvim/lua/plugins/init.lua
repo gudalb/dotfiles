@@ -42,6 +42,7 @@ return {
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>q', group = '[Q]uick Session' },
       },
     },
   },
@@ -500,6 +501,31 @@ return {
     keys = {
       { '<leader>e', '<cmd>NvimTreeFindFileToggle<cr>', desc = 'Toggle file explorer' },
     },
+  },
+  {
+    'rmagatti/auto-session',
+    lazy = false,
+    opts = {
+      suppressed_dirs = { '~/', '~/Downloads' },
+      session_lens = { load_on_setup = false },
+    },
+    keys = {
+      { '<leader>qs', '<cmd>SessionSave<cr>', desc = '[Q]uick [S]ession Save' },
+      { '<leader>qr', '<cmd>SessionRestore<cr>', desc = '[Q]uick Session [R]estore' },
+      { '<leader>qd', '<cmd>SessionDelete<cr>', desc = '[Q]uick Session [D]elete' },
+    },
+    init = function()
+      -- Close nvim-tree before saving session to avoid issues
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'SessionSavePre',
+        callback = function()
+          local ok, api = pcall(require, 'nvim-tree.api')
+          if ok then
+            api.tree.close()
+          end
+        end,
+      })
+    end,
   },
   {
     'kdheepak/lazygit.nvim',
