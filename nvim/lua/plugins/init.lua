@@ -411,8 +411,11 @@ return {
     priority = 1000,
     config = function()
       require('tokyonight').setup {
+        transparent = true,
         styles = {
           comments = { italic = false },
+          sidebars = 'transparent',
+          floats = 'transparent',
         },
       }
 
