@@ -521,6 +521,16 @@ return {
       { '<leader>qd', '<cmd>SessionDelete<cr>', desc = '[Q]uick Session [D]elete' },
     },
     init = function()
+      -- Close terminal buffers before quitting so they aren't saved in the session
+      vim.api.nvim_create_autocmd('VimLeavePre', {
+        callback = function()
+          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            if vim.bo[buf].buftype == 'terminal' then
+              vim.api.nvim_buf_delete(buf, { force = true })
+            end
+          end
+        end,
+      })
       -- Close nvim-tree before saving session to avoid issues
       vim.api.nvim_create_autocmd('User', {
         pattern = 'SessionSavePre',
