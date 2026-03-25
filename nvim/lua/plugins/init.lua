@@ -531,6 +531,20 @@ return {
           end
         end,
       })
+      -- After restoring a session, close buffers whose files no longer exist
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'SessionLoadPost',
+        callback = function()
+          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            if vim.api.nvim_buf_is_loaded(buf) then
+              local name = vim.api.nvim_buf_get_name(buf)
+              if name ~= '' and vim.fn.filereadable(name) == 0 then
+                vim.api.nvim_buf_delete(buf, { force = true })
+              end
+            end
+          end
+        end,
+      })
     end,
   },
   {
