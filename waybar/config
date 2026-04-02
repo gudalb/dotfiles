@@ -62,16 +62,6 @@
       "battery",
       "clock"
     ],
-    "custom/launcher": {
-      "format": "",
-      "on-click": "fuzzel",
-      "tooltip": false
-    },
-    "custom/close": {
-      "format": "",
-      "on-click": "hyprctl dispatch killactive",
-      "tooltip": false
-    },
     "backlight": {
       "format": "{percent}% {icon}",
       "format-icons": [
