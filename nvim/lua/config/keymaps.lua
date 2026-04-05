@@ -92,9 +92,15 @@ local function toggle_terminal(term_id)
   vim.cmd 'startinsert'
 end
 
-vim.keymap.set({ 'n', 't' }, '<C-1>', function() toggle_terminal(1) end, { desc = 'Toggle terminal 1' })
-vim.keymap.set({ 'n', 't' }, '<C-2>', function() toggle_terminal(2) end, { desc = 'Toggle terminal 2' })
-vim.keymap.set({ 'n', 't' }, '<C-3>', function() toggle_terminal(3) end, { desc = 'Toggle terminal 3' })
+vim.keymap.set({ 'n', 't' }, '<C-1>', function()
+  toggle_terminal(1)
+end, { desc = 'Toggle terminal 1' })
+vim.keymap.set({ 'n', 't' }, '<C-2>', function()
+  toggle_terminal(2)
+end, { desc = 'Toggle terminal 2' })
+vim.keymap.set({ 'n', 't' }, '<C-3>', function()
+  toggle_terminal(3)
+end, { desc = 'Toggle terminal 3' })
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
@@ -151,3 +157,5 @@ map('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
 map('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })
 map('n', 'gi', vim.lsp.buf.implementation, { desc = '[G]oto [I]mplementation' })
 map('n', 'grT', vim.lsp.buf.hover, { desc = '[G]et [T]ype info' })
+
+vim.keymap.set('n', '<leader>u', require('undotree').open)

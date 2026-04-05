@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd('FileChangedShellPost', {
     -- Trigger LSP to re-analyze the buffer
     vim.schedule(function()
       local bufnr = args.buf
-      local clients = vim.lsp.get_clients({ bufnr = bufnr })
+      local clients = vim.lsp.get_clients { bufnr = bufnr }
       for _, client in ipairs(clients) do
         -- Detach and reattach to force LSP to re-read
         vim.lsp.buf_detach_client(bufnr, client.id)
@@ -126,6 +126,8 @@ require('lazy').setup('plugins', {
     },
   },
 })
+
+vim.cmd 'packadd nvim.undotree'
 
 -- Load all config files after plugins are loaded
 local config_path = vim.fn.stdpath 'config' .. '/lua/config'
