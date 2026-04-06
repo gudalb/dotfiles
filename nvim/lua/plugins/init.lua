@@ -405,24 +405,14 @@ return {
       signature = { enabled = true },
     },
   },
-
   {
-    'folke/tokyonight.nvim',
+    'catppuccin/nvim',
+    name = 'catppuccin',
     priority = 1000,
     config = function()
-      require('tokyonight').setup {
-        transparent = true,
-        styles = {
-          comments = { italic = false },
-          sidebars = 'transparent',
-          floats = 'transparent',
-        },
-      }
-
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'catppuccin-mocha'
     end,
   },
-
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   {
@@ -566,7 +556,9 @@ return {
         local map = function(mode, l, r, desc)
           vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
         end
-        map('n', '<leader>hb', function() gs.blame_line { full = true } end, 'Blame line')
+        map('n', '<leader>hb', function()
+          gs.blame_line { full = true }
+        end, 'Blame line')
         map('n', '<leader>hB', gs.toggle_current_line_blame, 'Toggle line blame')
         map('n', ']h', gs.next_hunk, 'Next hunk')
         map('n', '[h', gs.prev_hunk, 'Prev hunk')
