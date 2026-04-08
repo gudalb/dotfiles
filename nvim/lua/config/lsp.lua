@@ -20,18 +20,36 @@ vim.lsp.config('rust_analyzer', {
   },
 })
 
+vim.lsp.config('gopls', {
+  root_markers = { 'go.mod', 'go.work', '.git' },
+})
+
 vim.lsp.config('eslint', {
   filetypes = {
-    'javascript', 'javascriptreact', 'typescript', 'typescriptreact',
-    'vue', 'html', 'css', 'scss', 'json',
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
+    'vue',
+    'html',
+    'css',
+    'scss',
+    'json',
   },
   settings = { format = true },
 })
 
 vim.lsp.enable {
-  'lua_ls', 'rust_analyzer', 'eslint',
-  'html', 'cssls', 'jsonls', 'ts_ls',
-  'angularls', 'gopls', 'svelte',
+  'lua_ls',
+  'rust_analyzer',
+  'eslint',
+  'html',
+  'cssls',
+  'jsonls',
+  'ts_ls',
+  'angularls',
+  'gopls',
+  'svelte',
 }
 
 -- Keymaps, highlights, and hints on attach
@@ -43,7 +61,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     local client = vim.lsp.get_client_by_id(event.data.client_id)
-    if not client then return end
+    if not client then
+      return
+    end
 
     if client.name == 'eslint' then
       client.server_capabilities.documentFormattingProvider = true
