@@ -47,6 +47,21 @@ return {
     },
   },
   {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    opts = {
+      ensure_installed = {
+        'markdown', 'markdown_inline',
+        'go', 'c_sharp', 'rust',
+        'typescript', 'javascript',
+      },
+      auto_install = true,
+    },
+    config = function(_, opts)
+      require('nvim-treesitter.configs').setup(opts)
+    end,
+  },
+  {
     'ibhagwan/fzf-lua',
     event = 'VimEnter',
     dependencies = {
