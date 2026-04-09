@@ -1,5 +1,4 @@
 return {
-  -- 'NMAC427/guess-indent.nvim',
   {
     'folke/which-key.nvim',
     event = 'VimEnter',
@@ -51,9 +50,13 @@ return {
     build = ':TSUpdate',
     opts = {
       ensure_installed = {
-        'markdown', 'markdown_inline',
-        'go', 'c_sharp', 'rust',
-        'typescript', 'javascript',
+        'markdown',
+        'markdown_inline',
+        'go',
+        'c_sharp',
+        'rust',
+        'typescript',
+        'javascript',
       },
       auto_install = true,
     },
@@ -157,28 +160,35 @@ return {
     dependencies = { 'williamboman/mason.nvim' },
     opts = {
       ensure_installed = {
-        'stylua', 'ruff', 'csharpier', 'yamlfix', 'netcoredbg',
-        'lua-language-server', 'rust-analyzer', 'eslint-lsp',
-        'html-lsp', 'css-lsp', 'json-lsp',
-        'typescript-language-server', 'angular-language-server',
-        'roslyn', 'gopls', 'svelte-language-server',
+        'stylua',
+        'ruff',
+        'csharpier',
+        'yamlfix',
+        'netcoredbg',
+        'lua-language-server',
+        'rust-analyzer',
+        'eslint-lsp',
+        'html-lsp',
+        'css-lsp',
+        'json-lsp',
+        'typescript-language-server',
+        'angular-language-server',
+        'roslyn',
+        'gopls',
+        'svelte-language-server',
       },
     },
   },
-  { 'j-hui/fidget.nvim', opts = {} },
-
   {
-    'seblj/roslyn.nvim',
+    'seblyng/roslyn.nvim',
     ft = 'cs',
     opts = {},
   },
-
   {
     'DestopLine/boilersharp.nvim',
     ft = 'cs',
     opts = {},
   },
-
   {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
@@ -213,7 +223,6 @@ return {
       },
     },
   },
-
   {
     'saghen/blink.cmp',
     event = 'VimEnter',
@@ -273,8 +282,6 @@ return {
       vim.cmd.colorscheme 'catppuccin-mocha'
     end,
   },
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
   {
     'windwp/nvim-ts-autotag',
     event = 'InsertEnter',
@@ -298,7 +305,6 @@ return {
       end
     end,
   },
-
 
   {
     'nvim-tree/nvim-tree.lua',

@@ -24,6 +24,7 @@ vim.lsp.config('gopls', {
   root_markers = { 'go.mod', 'go.work', '.git' },
 })
 
+
 vim.lsp.config('eslint', {
   filetypes = {
     'javascript',
