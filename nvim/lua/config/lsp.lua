@@ -70,6 +70,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
       client.server_capabilities.documentRangeFormattingProvider = true
     end
 
+    map('grr', require('fzf-lua').lsp_references, '[G]oto [R]eferences')
+
     if client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
       local hl = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
       vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
