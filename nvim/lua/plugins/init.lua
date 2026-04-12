@@ -48,20 +48,15 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    opts = {
-      ensure_installed = {
-        'markdown',
-        'markdown_inline',
-        'go',
-        'c_sharp',
-        'rust',
-        'typescript',
-        'javascript',
-      },
-      auto_install = true,
-    },
-    config = function(_, opts)
-      require('nvim-treesitter').setup(opts)
+    config = function()
+      require('nvim-treesitter').install({
+        'markdown', 'markdown_inline', 'go', 'c_sharp', 'rust', 'typescript', 'javascript',
+      })
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
     end,
   },
   {

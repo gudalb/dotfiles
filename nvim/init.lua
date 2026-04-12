@@ -26,6 +26,7 @@ vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
 vim.go.background = 'dark'
+vim.o.termguicolors = true
 
 -- Auto-reload files when changed externally
 vim.o.autoread = true
