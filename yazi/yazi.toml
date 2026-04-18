@@ -2,6 +2,14 @@
 edit = [
 	{ run = 'nvim "$@"', block = true, for = "unix" },
 ]
+media = [
+	{ run = 'mpv "$@"', desc = "mpv" },
+	{ run = 'vlc "$@"', desc = "VLC" },
+]
 
 [open]
-text = "edit"
+rules = [
+	{ mime = "video/*", use = ["media"] },
+	{ mime = "audio/*", use = ["media"] },
+	{ mime = "text/*", use = ["edit"] },
+]
