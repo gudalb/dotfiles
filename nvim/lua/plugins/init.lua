@@ -398,8 +398,11 @@ return {
     'lewis6991/gitsigns.nvim',
     event = 'BufReadPre',
     opts = {
+      current_line_blame_opts = {
+        delay = 200,
+      },
       on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
+        local gs = require('gitsigns')
         local map = function(mode, l, r, desc)
           vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
         end
