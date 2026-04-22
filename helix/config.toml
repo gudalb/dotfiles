@@ -1,10 +1,15 @@
+theme = "catppuccin_mocha"
+
 [editor.lsp]
 enable = true
 display-messages = true
 display-inlay-hints = true
-snippets = true
 
 [editor]
 line-number = "relative"
 cursorline = true
 color-modes = true
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+other-lines = "error"

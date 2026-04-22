@@ -4,5 +4,19 @@ command = "csharp-ls"
 [[language]]
 name = "c-sharp"
 scope = "source.cs"
-roots = ["*.sln", "*.csproj", "Program.cs", "obj"]
-language-servers = [ "csharp-ls" ]
+file-types = ["cs"]
+roots = [".sln", ".csproj"]
+language-servers = ["csharp-ls"]
+
+[language.debugger]
+name = "netcoredbg"
+transport = "tcp"
+command = "netcoredbg"
+port-arg = "--server={}"
+args = ["--interpreter=vscode"]
+
+[[language.debugger.templates]]
+name = "launch"
+request = "launch"
+completion = [{ name = "binary", completion = "filename" }]
+args = { type = "coreclr", request = "launch", program = "{0}" }
