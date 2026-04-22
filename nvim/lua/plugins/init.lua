@@ -48,15 +48,22 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    lazy = false,
     config = function()
-      require('nvim-treesitter').install({
-        'markdown', 'markdown_inline', 'go', 'c_sharp', 'rust', 'typescript', 'javascript',
-      })
-      vim.api.nvim_create_autocmd('FileType', {
-        callback = function()
-          pcall(vim.treesitter.start)
-        end,
-      })
+      require('nvim-treesitter').setup {
+        ensure_installed = {
+          'markdown',
+          'markdown_inline',
+          'go',
+          'c_sharp',
+          'rust',
+          'typescript',
+          'javascript',
+        },
+        highlight = {
+          enable = true,
+        },
+      }
     end,
   },
   {
@@ -402,7 +409,7 @@ return {
         delay = 200,
       },
       on_attach = function(bufnr)
-        local gs = require('gitsigns')
+        local gs = require 'gitsigns'
         local map = function(mode, l, r, desc)
           vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
         end
