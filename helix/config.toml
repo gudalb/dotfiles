@@ -1,0 +1,10 @@
+[editor.lsp]
+enable = true
+display-messages = true
+display-inlay-hints = true
+snippets = true
+
+[editor]
+line-number = "relative"
+cursorline = true
+color-modes = true

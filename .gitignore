@@ -100,3 +100,5 @@ nvim/lua/plugins/.DS_Store
 .DS_Store
 iterm2
 nixos/hardware-configuration.nix
+
+helix/runtime/
