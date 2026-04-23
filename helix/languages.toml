@@ -4,7 +4,6 @@ command = "csharp-ls"
 [[language]]
 auto-format = true
 name = "c-sharp"
-formatter = { command = "csharpier" }
 scope = "source.cs"
 file-types = ["cs"]
 roots = [".sln", ".csproj"]
