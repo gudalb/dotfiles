@@ -290,7 +290,6 @@ return {
     event = 'InsertEnter',
     opts = {},
   },
-
   {
     'echasnovski/mini.nvim',
     config = function()
