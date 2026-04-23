@@ -3,7 +3,7 @@ theme = "catppuccin_mocha"
 [editor.lsp]
 enable = true
 display-messages = true
-display-inlay-hints = true
+display-inlay-hints = false
 
 [editor]
 line-number = "relative"
