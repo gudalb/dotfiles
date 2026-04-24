@@ -465,14 +465,19 @@ return {
   {
     'folke/flash.nvim',
     event = 'VeryLazy',
-    ---@type Flash.Config
     opts = {},
     keys = {
       {
         '<leader>w',
         mode = { 'n', 'x', 'o' },
         function()
-          require('flash').jump()
+          require('flash').jump {
+            search = {
+              mode = function(str)
+                return '\\c' .. str
+              end,
+            },
+          }
         end,
         desc = 'Flash',
       },
