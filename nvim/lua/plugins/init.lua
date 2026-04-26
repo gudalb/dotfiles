@@ -60,10 +60,14 @@ return {
           'typescript',
           'javascript',
         },
-        highlight = {
-          enable = true,
-        },
       }
+
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = { 'go', 'rust', 'typescript', 'javascript', 'c_sharp', 'markdown' },
+        callback = function()
+          vim.treesitter.start()
+        end,
+      })
     end,
   },
   {
